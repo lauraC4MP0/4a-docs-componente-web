@@ -10,19 +10,19 @@
       </div>
       <div class="modal__content">
         <h2>NUEVO PACIENTE</h2>
-        <form>
+        <form v-on:submit.prevent="processNewPatient">
           <ul class="form-list">
             <li class="form-list__row">
               <label>Número de identificación</label>
-              <input type="text" name="" required />
+              <input type="text" name="" required v-model="patient.id" />
             </li>
             <li class="form-list__row">
               <label>Nombres</label>
-              <input type="text" name="" required />
+              <input type="text" name="" required v-model="patient.name"/>
             </li>
             <li class="form-list__row">
               <label>Apellidos</label>
-              <input type="text" name="" required />
+              <input type="text" name="" required v-model="patient.lastname"/>
             </li>
             <li class="form-list__row form-list__row--inline">
               <div>
@@ -61,18 +61,18 @@
             </li>
             <li class="form-list__row">
               <label>Número de celular</label>
-              <input type="text" name="" required />
+              <input type="text" name="" required v-model="patient.phoneNumber"/>
             </li>
             <li class="form-list__row">
               <label>Email</label>
-              <input type="email" name="" required="" />
+              <input type="email" name="" required v-model="patient.email" />
             </li>
             <li class="form-list__row">
               <label>Tipo de sangre</label>
               <div class="bloodType-selected">
                 <br />
-                <select>
-                  <option value="A+">A+</option>
+                <select v-model="patient.bloodType">
+                  <option value="A+" selected>A+</option>
                   <option value="A-">A-</option>
                   <option value="B+">B+</option>
                   <option value="B-">B-</option>
@@ -85,7 +85,7 @@
               </div>
             </li>
             <li>
-              <button type="submit" class="button" onclick="format()">
+              <button type="submit" class="button" >
                 Crear paciente
               </button>
             </li>
@@ -103,24 +103,33 @@ export default {
   name: "NewPatient",
   data: function () {
     return {
+      year: document.getElementById("year"),
+      month: document.getElementById("month"),
+      day: document.getElementById("day"),
       patient: {
         id: null,
         name: "",
         lastname: "",
-        dateBirth:
-          document.getElementById("year").value +
-          "-" +
-          document.getElementById("month").value +
-          "-" +
-          document.getElementById("day").value,
+        dateBirth: "",
         phoneNumber: null,
         email: "",
         bloodType: "",
       },
     };
   },
+  created: async function () {},
   methods: {
     processNewPatient: async function () {
+      this.patient.dateBirth =
+        "" +
+        document.getElementById("year").value +
+        "-" +
+        document.getElementById("month").value +
+        "-" +
+        document.getElementById("day").value +
+        "";
+      console.log(this.patient.dateBirth);
+      console.log(this.patient);
       await this.$apollo
         .mutate({
           mutation: gql`
@@ -177,7 +186,7 @@ export default {
 body {
   font-family: "Open Sans", sans-serif;
   color: #1a1a1a;
-  background-color: #f0f0f0;
+  background-color: rgb(255 255 255 / 60%);
 }
 
 h1,

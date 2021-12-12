@@ -2,7 +2,7 @@
   <div class="main-container">
     <br />
     <center>
-      <div id="error" class="alert alert-danger ocultar" role="alert">
+      <div id="error" class="alert alert-danger hide" role="alert">
         Las contraseñas no coinciden, vuelve a intentar.
       </div>
     </center>
@@ -22,9 +22,9 @@
           type="text"
           v-model="user.id"
         />
-        <label for="signup-input-name" class="signup__label"> Username </label>
+        <label for="signup-input-user" class="signup__label"> Username </label>
         <input
-          id="signup-input-name"
+          id="signup-input-user"
           class="signup__input"
           type="text"
           v-model="user.username"
@@ -69,14 +69,8 @@
           type="email"
           v-model="user.email"
         />
-        <label for="signup-sign-up" class="signup__label--checkbox">
-          <input
-            id="signup-sign-up"
-            type="checkbox"
-            class="signup__input--checkbox"
-          />
-          Quiero recibir notificaciones a mi correo
-        </label>
+        <br />
+        <br />
         <button class="signup__submit" type="submit" id="signup">
           Registrarse
         </button>
@@ -102,26 +96,35 @@ export default {
         email: "",
       },
       pass1: document.getElementById("signup-input-password"),
-      pass2: docuemnt.getElementById("signup-input-password2"),
+      pass2: document.getElementById("signup-input-password2"),
       e: document.getElementById("error"),
       b: document.getElementById("signup"),
     };
   },
+  created: async function () {},
   methods: {
     processSingUp: async function () {
-      var validation = true;
-      if (pass1 != pass2) {
-        document.getElementById("error").classList.add("mostrar");
+      this.pass1 = document.getElementById("signup-input-password").value;
+      this.pass2 = document.getElementById("signup-input-password2").value;
+      console.log(this.pass1 + "..." + this.pass2);
+      var validation = false;
+      if (
+        this.pass1 != this.pass2 ||
+        this.pass1 == null ||
+        this.pass2 == null
+      ) {
+        document.getElementById("error").classList.add("show");
         alert("Las contraseñan no coinciden, vuelve a intentar");
         validation = false;
       } else {
-        document.getElementById("error").classList.remove("mostrar");
+        document.getElementById("error").classList.remove("show");
         setTimeout(function () {
           location.reload();
         }, 3000);
         validation = true;
       }
       if (validation) {
+		  console.log(this.user);
         await this.$apollo
           .mutate({
             mutation: gql`
@@ -149,6 +152,7 @@ export default {
               lastname: result.lastname,
               email: result.email,
             };
+            console.log(dataSignUp);
             this.$emit("completedSignUp", dataSignUp);
           })
           .catch((error) => {
@@ -163,7 +167,7 @@ export default {
 
 <style>
 body {
-  background-color: #e9e9e9;
+  background-color: rgb(255 255 255 / 60%);
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
   line-height: 1.25;
@@ -357,10 +361,10 @@ body {
   color: rgb(17, 97, 237);
 }
 
-.signup-container .ocultar {
+.main-container .hide {
   display: none;
 }
-.signup-container .mostrar {
+.main-container .show {
   display: block;
 }
 

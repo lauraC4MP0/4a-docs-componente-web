@@ -25,7 +25,7 @@
       <a v-if="!is_auth"> Inicio</a>
       </li>
       <li><a v-if="!is_auth"> Nosotros</a></li>
-      <li><a v-if="!is_auth"> Serivicios</a></li>
+      <li><a v-if="!is_auth"> Servicios</a></li>
       <li><a v-if="!is_auth"> Contactenos</a></li>
 
      <li> <a v-if="is_auth"><router-link to="/home"> Inicio</router-link></a>
@@ -37,7 +37,7 @@
     <li>
       <a v-if="is_auth"><router-link to="/user/newPatient">Pacientes</router-link></a>
     </li>
-		<li><a v-if="is_auth"><router-link to="/product/new">Reportes</router-link></a></li>
+		<li><a v-if="is_auth"><router-link to="/user/reportEvolution">Reportes</router-link></a></li>
     
 						
 						

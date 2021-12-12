@@ -91,7 +91,31 @@
             </li>
           </ul>
         </form>
+        
       </div>
+      <ul id="navigationMenu">
+    <li>
+        <a class="home" href="#">
+            <router-link to="/user/newPatient"><span> Crear Paciente</span></router-link>
+        </a>
+    </li>
+
+    <li>
+        <a class="about" href="#">
+            <span>About</span>
+        </a>
+    </li>
+
+    
+
+    <li>
+        <a class="portfolio" href="#">
+            <span>Portfolio</span>
+        </a>
+    </li>
+
+    
+</ul>
     </div>
   </div>
 </template>
@@ -481,4 +505,88 @@ input:focus {
 .modal__content h2 {
   padding-top: 50px;
 }
+#navigationMenu li{
+    list-style:none;
+    height:39px;
+    padding:2px;
+    width:40px;
+}
+#navigationMenu span{
+    /* Container properties */
+    width:0;
+    left:38px;
+    padding:0;
+    position:absolute;
+    overflow:hidden;
+
+    /* Text properties */
+    font-family:'Myriad Pro',Arial, Helvetica, sans-serif;
+    font-size:18px;
+    font-weight:bold;
+    letter-spacing:0.6px;
+    white-space:nowrap;
+    line-height:39px;
+
+    /* CSS3 Transition: */
+    -webkit-transition: 0.25s;
+
+    /* Future proofing (these do not work yet): */
+    -moz-transition: 0.25s;
+    transition: 0.25s;
+}
+
+#navigationMenu a{
+    /* The background sprite: */
+    background:url('./navigation.jpg') no-repeat;
+
+    height:39px;
+    width:38px;
+    display:block;
+    position:relative;
+}
+
+/* General hover styles */
+
+#navigationMenu a:hover span{ width:auto; padding:0 20px;overflow:visible; }
+#navigationMenu a:hover{
+    text-decoration:none;
+
+    /* CSS outer glow with the box-shadow property */
+    -moz-box-shadow:0 0 5px #9ddff5;
+    -webkit-box-shadow:0 0 5px #9ddff5;
+    box-shadow:0 0 5px #9ddff5;
+}
+/* Green Button */
+
+#navigationMenu .home { background-position:0 0;}
+#navigationMenu .home:hover {   background-position:0 -39px;}
+#navigationMenu .home span{
+    background-color:#7da315;
+    color:#3d4f0c;
+    text-shadow:1px 1px 0 #99bf31;
+}
+
+/* Blue Button */
+
+#navigationMenu .about { background-position:-38px 0;}
+#navigationMenu .about:hover { background-position:-38px -39px;}
+#navigationMenu .about span{
+    background-color:#1e8bb4;
+    color:#223a44;
+    text-shadow:1px 1px 0 #44a8d0;
+}
+
+
+
+/* Yellow Button */
+
+#navigationMenu .portfolio { background-position:-114px 0;}
+#navigationMenu .portfolio:hover{ background-position:-114px -39px;}
+#navigationMenu .portfolio span{
+    background-color:#d0a525;
+    color:#604e18;
+    text-shadow:1px 1px 0 #d8b54b;
+}
+
+
 </style>

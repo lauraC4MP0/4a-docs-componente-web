@@ -73,14 +73,11 @@ export default {
       is_auth: false,
     };
   },
-  created: function () {
-    this.verifyAuth();
-  },
   components: {},
   methods: {
     verifyAuth: function () {
-      /*if (this.is_auth == false) {
-        this.$router.push({ name: "logIn" });*/
+      if (this.is_auth == false) {
+        this.$router.push({ name: "logIn" });
       }
     },
     loadLogIn: function () {
@@ -118,8 +115,11 @@ export default {
       alert("Producto agregado exitosamente");
       },
     
-      }
-
+      },
+  created: function () {
+    this.verifyAuth();
+  },
+};
 </script>
 
 <style>

@@ -10,106 +10,70 @@
       </div>
       <div class="modal__content">
         <h2>REPORTE MÉDICO DEL PACIENTE</h2>
-        <form>
+        <form v-on:submit.prevent="processReportEvolution">
           <ul class="form-list">
-
             <li class="form-list__row form-list__row--inline">
               <div>
-                <label>Fecha de reporte</label>
+                <label>Fecha de reporte<br><br><div class="date">{{this.date.toDateString()}}</div></label>
                 <br />
-                <div class="form-list__input-inline">
-                  <input
-                    type="text"
-                    name="db_day"
-                    placeholder="DD"
-                    required
-                    minlength="2"
-                    maxlength="2"
-                    id="day"
-                  />
-                  <input
-                    type="text"
-                    name="db_month"
-                    placeholder="MM"
-                    required
-                    minlength="2"
-                    maxlength="2"
-                    id="month"
-                  />
-                  <input
-                    type="text"
-                    name="db_year"
-                    placeholder="YYYY"
-                    required
-                    minlength="4"
-                    maxlength="4"
-                    id="year"
-                  />
-                </div>
               </div>
             </li>
 
             <li class="form-list__row">
               <label>Doc. de identidad</label>
-              <input type="text" name="" required />
-            </li>
-
-            <li class="form-list__row">
-              <label>Edad</label>
-              <input type="text" name="" required />
+              <input type="text" name="" required v-model="reportEvolution.idPatient"/>
             </li>
 
             <li class="form-list__row">
               <label>Peso</label>
-              <input type="text" name="" required="" />
+              <input type="text" name="" required="" v-model="reportEvolution.weight" />
             </li>
 
             <li class="form-list__row">
               <label>Motivo de la consulta</label>
-              <input type="text" name="" required="" />
+              <input type="text" name="" required="" v-model="reportEvolution.reason_for_consultation"/>
             </li>
 
             <li class="form-list__row">
               <label>Enfermedad actual</label>
-              <input type="text" name="" required="" />
+              <input type="text" name="" required="" v-model="reportEvolution.current_illness"/>
             </li>
 
             <li class="form-list__row">
               <label>Antecedentes</label>
-              <input type="text" name="" required="" />
+              <input type="text" name="" required="" v-model="reportEvolution.background"/>
             </li>
 
             <li class="form-list__row">
               <label>Diagnóstico</label>
-              <input type="text" name="" required="" />
+              <input type="text" name="" required="" v-model="reportEvolution.diseaes"/>
             </li>
 
             <li class="form-list__row">
               <label>Alergias</label>
-              <input type="text" name="" required="" />
+              <input type="text" name="" required="" v-model="reportEvolution.allergies"/>
             </li>
 
             <li class="form-list__row">
               <label>Historia familiar de enfermedades</label>
-              <input type="text" name="" required="" />
+              <input type="text" name="" required="" v-model="reportEvolution.hereditary_family_history"/>
             </li>
 
             <li class="form-list__row">
               <label>Examen físico</label>
-              <input type="text" name="" required="" />
+              <input type="text" name="" required="" v-model="reportEvolution.physical_exam"/>
             </li>
 
             <li class="form-list__row">
               <label>Fórmula médica</label>
-              <input type="text" name="" required="" />
+              <input type="text" name="" required="" v-model="reportEvolution.medicines"/>
             </li>
 
             <li>
-              <button type="submit" class="button" onclick="format()">
+              <button type="submit" class="button">
                 Crear Reporte
               </button>
             </li>
-
           </ul>
         </form>
       </div>
@@ -125,26 +89,34 @@ export default {
   data: function () {
     return {
       reportEvolution: {
-        idPatiend                 : null,
-        weight                    : "",
-        reason_for_consultation   : "",
-        current_illness           : "",
-        background                : "",
-        diseases                  : "",
-        allergies                 : "",
-        hereditary_family_history : "",
-        physical_exam             : "",
-        medicines                 : ""
+        idPatient: null,
+        weight: "",
+        reason_for_consultation: "",
+        current_illness: "",
+        background: "",
+        diseases: "",
+        allergies: "",
+        hereditary_family_history: "",
+        physical_exam: "",
+        medicines: "",
       },
+      date: null,
     };
   },
+  created: async function () {
+    let now=Date.now();
+    this.date=new Date(now);
+    console.log(this.date.getFullYear()+"-"+(this.date.getMonth()+1)+"-"+this.date.getDate());
+  },
 
-  methods: { 
+  methods: {
     processReportEvolution: async function () {
-      await this.$apollo.mutate(
-        {
+      await this.$apollo
+        .mutate({
           mutation: gql`
-            mutation CreateReportEvolution($reportEvolution: ReportEvolutionInput!) {
+            mutation CreateReportEvolution(
+              $reportEvolution: ReportEvolutionInput!
+            ) {
               createReportEvolution(reportEvolution: $reportEvolution) {
                 date
                 idPatient
@@ -161,34 +133,36 @@ export default {
               }
             }
           `,
-          
+
           variables: {
             reportEvolution: this.reportEvolution,
           },
-        }
-        )
+        })
 
         .then((result) => {
           let dataReportEvolution = {
-            date                      : result.data.createReportEvolution.date,
-            idPatient                 : result.data.createReportEvolution.idPatient,
-            age                       : result.data.createReportEvolution.age,
-            weight                    : result.data.createReportEvolution.weight,
-            reason_for_consultation   : result.data.createReportEvolution.reason_for_consultation,
-            current_illness           : result.data.createReportEvolution.current_illness,
-            background                : result.data.createReportEvolution.background,
-            diseases                  : result.data.createReportEvolution.diseases,
-            allergies                 : result.data.createReportEvolution.allergies,
-            hereditary_family_history : result.data.createReportEvolution.hereditary_family_history,
-            physical_exam             : result.data.createReportEvolution.physical_exam,
-            medicines                 : result.data.createReportEvolution.medicines
+            date: result.data.createReportEvolution.date,
+            idPatient: result.data.createReportEvolution.idPatient,
+            age: result.data.createReportEvolution.age,
+            weight: result.data.createReportEvolution.weight,
+            reason_for_consultation:
+              result.data.createReportEvolution.reason_for_consultation,
+            current_illness: result.data.createReportEvolution.current_illness,
+            background: result.data.createReportEvolution.background,
+            diseases: result.data.createReportEvolution.diseases,
+            allergies: result.data.createReportEvolution.allergies,
+            hereditary_family_history:
+              result.data.createReportEvolution.hereditary_family_history,
+            physical_exam: result.data.createReportEvolution.physical_exam,
+            medicines: result.data.createReportEvolution.medicines,
           };
           this.$emit("completedReportEvolution", dataReportEvolution);
-        }
-        )
+        })
         .catch((error) => {
           console.log(error);
-          alert("ERROR 404: Verifique el Doc de identidad del paciente es correcto");
+          alert(
+            "ERROR 404: Verifique que el documento de identidad del paciente es correcto"
+          );
         });
     },
   },
@@ -220,6 +194,17 @@ h4,
 h5 {
   margin: 0;
   font-weight: 600;
+}
+.date{
+    width: calc(100% - 10px);
+  min-height: 30px;
+  padding-left: 5px;
+  padding-right: 5px;
+  letter-spacing: 0.5px;
+  border: 0;
+  border-bottom: 2px solid #f0f0f0;
+  color:#000;
+
 }
 
 .button {
@@ -311,7 +296,6 @@ input:focus {
   margin-bottom: 25px;
 }
 .form-list__row select {
-
   display: inline-block;
   width: 80px;
   cursor: pointer;
@@ -329,7 +313,7 @@ input:focus {
   border-radius: 12px;
   position: relative;
   transition: all 0.25s ease;
-} 
+}
 .form-list__row select::-ms-expand {
   display: none;
 }
@@ -433,7 +417,7 @@ input:focus {
   align-items: center;
   height: 100vh;
   width: 100vw;
-  padding-top: 200px;
+  padding-top: 600px; /*aumenté de 200 a 600px*/
   z-index: 100;
   overflow-y: auto;
 }

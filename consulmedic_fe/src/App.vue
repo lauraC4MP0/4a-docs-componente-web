@@ -136,6 +136,7 @@ background: rgb(255 255 255 / 60%)#ffffff;
 
 
 .menu nav button{
+  cursor: pointer;
 color: #E5E7E9;
 background: rgb(24 127 175);
 border: 1px solid #E5E7E9;
@@ -143,8 +144,15 @@ align-items: right;
 border-radius: 50px;
 padding: 10px 20px;
 float: right;
+
+ 
+       
+        
+        
+        display: block;
+       
 }
-.header nav button:hover
+.menu nav button:hover
 {
 color: #283747;
 background: #E5E7E9;

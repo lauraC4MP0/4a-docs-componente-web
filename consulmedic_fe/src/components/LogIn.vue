@@ -149,9 +149,9 @@ export default {
     
   
     .logIn_user button:hover{
-        color: #0a0c0f;
-        background: rgb(9, 33, 44);
-        border: 1px solid #283747;
+        color: #283747;
+background: #E5E7E9;
+border: 1px solid #E5E7E9;
     }
   
     </style>

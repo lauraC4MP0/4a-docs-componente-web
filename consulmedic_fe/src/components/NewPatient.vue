@@ -107,12 +107,7 @@ export default {
         id: null,
         name: "",
         lastname: "",
-        dateBirth:
-          document.getElementById("year").value +
-          "-" +
-          document.getElementById("month").value +
-          "-" +
-          document.getElementById("day").value,
+        dateBirth:`${document.getElementById("year").value}-${document.getElementById("month").value}-${document.getElementById("day").value}`,
         phoneNumber: null,
         email: "",
         bloodType: "",

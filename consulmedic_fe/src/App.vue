@@ -25,7 +25,7 @@
       <a v-if="!is_auth"> Inicio</a>
       </li>
       <li><a v-if="!is_auth"> Nosotros</a></li>
-      <li><a v-if="!is_auth"> Serivicios</a></li>
+      <li><a v-if="!is_auth"> Servicios</a></li>
       <li><a v-if="!is_auth"> Contactenos</a></li>
 
      <li> <a v-if="is_auth"><router-link to="/home"> Inicio</router-link></a>
@@ -37,7 +37,7 @@
     <li>
       <a v-if="is_auth"><router-link to="/user/newPatient">Pacientes</router-link></a>
     </li>
-		<li><a v-if="is_auth"><router-link to="/product/new">Reportes</router-link></a></li>
+		<li><a v-if="is_auth"><router-link to="/user/reportEvolution">Reportes</router-link></a></li>
     
 						
 						
@@ -73,14 +73,11 @@ export default {
       is_auth: false,
     };
   },
-  created: function () {
-    this.verifyAuth();
-  },
   components: {},
   methods: {
     verifyAuth: function () {
-      /*if (this.is_auth == false) {
-        this.$router.push({ name: "logIn" });*/
+      if (this.is_auth == false) {
+        this.$router.push({ name: "logIn" });
       }
     },
     loadLogIn: function () {
@@ -118,8 +115,11 @@ export default {
       alert("Producto agregado exitosamente");
       },
     
-      }
-
+      },
+  created: function () {
+    this.verifyAuth();
+  },
+};
 </script>
 
 <style>
@@ -136,6 +136,7 @@ background: rgb(255 255 255 / 60%)#ffffff;
 
 
 .menu nav button{
+  cursor: pointer;
 color: #E5E7E9;
 background: rgb(24 127 175);
 border: 1px solid #E5E7E9;
@@ -143,8 +144,15 @@ align-items: right;
 border-radius: 50px;
 padding: 10px 20px;
 float: right;
+
+ 
+       
+        
+        
+        display: block;
+       
 }
-.header nav button:hover
+.menu nav button:hover
 {
 color: #283747;
 background: #E5E7E9;

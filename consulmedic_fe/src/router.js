@@ -48,13 +48,13 @@ const routes = [
         name: "updatePatient",
         component: UpdatePatient,
         meta: { requiresAuth: true }
-    },
+    },*/
     {
         path: '/user/reportEvolution',
         name: "reportEvolution",
         component: ReportEvolution,
-        meta: { requiresAuth: true }
-    },
+        meta: { requiresAuth: false }
+    },/*
     {
         path: '/user/historicReport',
         name: "historicReport",

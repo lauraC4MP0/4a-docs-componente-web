@@ -125,6 +125,7 @@ export default {
       }
       if (validation) {
 		  console.log(this.user);
+		  console.log(this.user.email);
         await this.$apollo
           .mutate({
             mutation: gql`
@@ -144,20 +145,21 @@ export default {
             },
           })
           .then((result) => {
+			  console.log(result);
             let dataSignUp = {
-              id: result.id,
-              username: result.username,
-              password: result.password,
-              name: result.name,
-              lastname: result.lastname,
-              email: result.email,
+              id: this.user.id,
+              username: this.user.username,
+              password: this.user.password,
+              name: this.user.name,
+              lastname: this.user.lastname,
+              email: this.user.email,
             };
             console.log(dataSignUp);
             this.$emit("completedSignUp", dataSignUp);
           })
           .catch((error) => {
             console.log(error);
-            alert("ERROR 400: Ingrese datos válidos, por favor");
+            alert("ERROR: "+error);
           });
       }
     },

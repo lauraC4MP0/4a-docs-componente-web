@@ -2,15 +2,15 @@ import gql from "graphql-tag";
 import { createRouter, createWebHistory } from "vue-router";
 import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client/core'
 
-import LogIn from './components/LogIn.vue' // Jira y Mockup
-import SignUp from './components/SignUp.vue' //JM
-import Home from './components/Home.vue' //JM
-import UserCreate from './components/UserCreate.vue' // Solo mockup
-import NewPatient from './components/NewPatient.vue' //JM
-import UpdatePatient from './components/UpdatePatient.vue' //JM
-import ReportEvolution from './components/ReportEvolution.vue' //JM
-import HistoricReport from './components/HistoricReport.vue' //JM
-import SuccessfullOperation  from './components/SuccessfullOperation.vue' //Solo mockup
+import LogIn                    from './components/LogIn.vue' // Jira y Mockup
+import SignUp                   from './components/SignUp.vue' //JM
+import Home                     from './components/Home.vue' //JM
+import UserCreate               from './components/UserCreate.vue' // Solo mockup
+import NewPatient               from './components/NewPatient.vue' //JM
+import UpdatePatient            from './components/UpdatePatient.vue' //JM
+import ReportEvolution          from './components/ReportEvolution.vue' //JM
+import HistoricReport           from './components/HistoricReport.vue' //JM
+import SuccessfullOperation     from './components/SuccessfullOperation.vue' //Solo mockup
 
 const routes = [{
         path: '/user/logIn',

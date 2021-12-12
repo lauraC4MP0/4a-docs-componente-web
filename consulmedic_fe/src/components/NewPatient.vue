@@ -95,23 +95,24 @@
       </div>
       <ul id="navigationMenu">
     <li>
-        <a class="home" href="#">
-            <router-link to="/user/newPatient"><span> Crear Paciente</span></router-link>
-        </a>
+        <b class="home"> <router-link to="/user/newPatient"><span>Crear Paciente</span></router-link></b>
+            
+        
     </li>
 
     <li>
-        <a class="about" href="#">
-            <span>About</span>
-        </a>
+          <b class="about"> <router-link to="/user/reportEvolution"><span>Consultar Paciente</span></router-link>
+            
+        </b>
+        
     </li>
 
     
 
     <li>
-        <a class="portfolio" href="#">
-            <span>Portfolio</span>
-        </a>
+        <b class="portfolio" href="#">
+            <span>Eliminar Paciente</span>
+        </b>
     </li>
 
     
@@ -535,9 +536,9 @@ input:focus {
     transition: 0.25s;
 }
 
-#navigationMenu a{
+#navigationMenu b{
     /* The background sprite: */
-    background:url('./navigation.jpg') no-repeat;
+     background:url('./navigation.jpg') no-repeat;
 
     height:39px;
     width:38px;
@@ -547,8 +548,8 @@ input:focus {
 
 /* General hover styles */
 
-#navigationMenu a:hover span{ width:auto; padding:0 20px;overflow:visible; }
-#navigationMenu a:hover{
+#navigationMenu b:hover span{ width:auto; padding:0 20px;overflow:visible; }
+#navigationMenu b:hover{
     text-decoration:none;
 
     /* CSS outer glow with the box-shadow property */
@@ -568,7 +569,7 @@ input:focus {
 
 /* Blue Button */
 
-#navigationMenu .about { background-position:-38px 0;}
+#navigationMenu .about { background-position:-38px 0px;}
 #navigationMenu .about:hover { background-position:-38px -39px;}
 #navigationMenu .about span{
     background-color:#1e8bb4;

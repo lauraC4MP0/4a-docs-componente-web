@@ -9,45 +9,9 @@
         />
       </div>
       <div class="modal__content">
-        <h2>REPORTE MÉDICO DEL PACIENTE</h2>
+        <h2>ACTUALIZACIÓN DE DATOS DEL PACIENTE</h2>
         <form>
           <ul class="form-list">
-
-            <li class="form-list__row form-list__row--inline">
-              <div>
-                <label>Fecha de reporte</label>
-                <br />
-                <div class="form-list__input-inline">
-                  <input
-                    type="text"
-                    name="db_day"
-                    placeholder="DD"
-                    required
-                    minlength="2"
-                    maxlength="2"
-                    id="day"
-                  />
-                  <input
-                    type="text"
-                    name="db_month"
-                    placeholder="MM"
-                    required
-                    minlength="2"
-                    maxlength="2"
-                    id="month"
-                  />
-                  <input
-                    type="text"
-                    name="db_year"
-                    placeholder="YYYY"
-                    required
-                    minlength="4"
-                    maxlength="4"
-                    id="year"
-                  />
-                </div>
-              </div>
-            </li>
 
             <li class="form-list__row">
               <label>Doc. de identidad</label>
@@ -55,58 +19,28 @@
             </li>
 
             <li class="form-list__row">
-              <label>Edad</label>
-              <input type="text" name="" required />
-            </li>
-
-            <li class="form-list__row">
-              <label>Peso</label>
+              <label>Nombres</label>
               <input type="text" name="" required="" />
             </li>
 
             <li class="form-list__row">
-              <label>Motivo de la consulta</label>
+              <label>Apellidos</label>
               <input type="text" name="" required="" />
             </li>
 
             <li class="form-list__row">
-              <label>Enfermedad actual</label>
+              <label>Teléfono</label>
               <input type="text" name="" required="" />
             </li>
 
             <li class="form-list__row">
-              <label>Antecedentes</label>
-              <input type="text" name="" required="" />
-            </li>
-
-            <li class="form-list__row">
-              <label>Diagnóstico</label>
-              <input type="text" name="" required="" />
-            </li>
-
-            <li class="form-list__row">
-              <label>Alergias</label>
-              <input type="text" name="" required="" />
-            </li>
-
-            <li class="form-list__row">
-              <label>Historia familiar de enfermedades</label>
-              <input type="text" name="" required="" />
-            </li>
-
-            <li class="form-list__row">
-              <label>Examen físico</label>
-              <input type="text" name="" required="" />
-            </li>
-
-            <li class="form-list__row">
-              <label>Fórmula médica</label>
+              <label>Email</label>
               <input type="text" name="" required="" />
             </li>
 
             <li>
               <button type="submit" class="button" onclick="format()">
-                Crear Reporte
+                Actualizar Datos
               </button>
             </li>
 

@@ -4,7 +4,8 @@
 
         <div class="container_logIn_user">
 
-            <h1>Bienvenido a CONSULMEDIC</h1>
+            <h1>CONSULMEDIC</h1>
+            
 
             <form v-on:submit.prevent="processLogInUser" >
                 <input type="text" v-model="user.username" placeholder="Usuario">
@@ -70,22 +71,21 @@ export default {
 
 <style>
     .logIn_user{
-        margin: 0;
+        
         
         height: 100%;
         width: 100%;
-        background: url(https://github.com/lauraC4MP0/4a-docs-componente-web/blob/develop/consulmedic_fe/src/utils/consulmedic%20inicio.png) no-repeat center center fixed; 
+        background: url("consulmedicinicio.png") no-repeat center center fixed; 
         display: flex;
         justify-content: center;
         align-items: center;
     }
+    
+    
     .container_logIn_user {
   
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        margin: auto;
+      
+        
         width: 260px;
         height: 260px;
         border-radius: 5px;
@@ -98,8 +98,9 @@ export default {
         font-family: 'Open Sans Condensed', sans-serif;
         position: relative;
         text-align: center;
-        font-size: 30px;
-        color: rgb(15, 14, 14);
+        font-size: 20px;
+        color: rgb(24 127 175);
+        margin: 20px 5px 30px 20px;
         text-shadow: 3px 3px 10px rgb(175, 170, 170);
     }
     
@@ -134,15 +135,15 @@ export default {
         bottom: 0;
         padding: 30px;
         margin: auto;
-            
-        background: rgba(3,3,3,.8);
+         width: 200px;   
+        background: rgb(24 127 175);
         color: #ffffff;
-        background: #34187c;
+        background: rgb(24 127 175);
         border: 1px solid #E5E7E9;
         border-radius: 50px;
         padding: 10px 20px;
         overflow: hidden;
-  
+        display: block;
         box-shadow: 10px 10px 30px #000;
     }
     
@@ -152,4 +153,5 @@ export default {
         background: rgb(9, 33, 44);
         border: 1px solid #283747;
     }
+  
     </style>

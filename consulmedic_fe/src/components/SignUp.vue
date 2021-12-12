@@ -102,7 +102,7 @@ export default {
         email: "",
       },
       pass1: document.getElementById("signup-input-password"),
-      pass2: docuemnt.getElementById("signup-input-password2"),
+      pass2: document.getElementById("signup-input-password2"),
       e: document.getElementById("error"),
       b: document.getElementById("signup"),
     };
@@ -163,7 +163,7 @@ export default {
 
 <style>
 body {
-  background-color: #e9e9e9;
+  background-color: rgb(255 255 255 / 60%);
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
   line-height: 1.25;
@@ -174,6 +174,7 @@ body {
   box-sizing: border-box;
   transition: 0.25s all ease;
 }
+
 
 .signup-container {
   display: block;

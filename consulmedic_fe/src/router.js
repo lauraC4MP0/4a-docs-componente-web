@@ -4,15 +4,16 @@ import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client/core
 
 import LogIn from './components/LogIn.vue' // Jira y Mockup
 import SignUp from './components/SignUp.vue' //JM
-import Home from './components/Home.vue' //JM
-import UserCreate from './components/UserCreate.vue' // Solo mockup
+//import Home from './components/Home.vue' //JM
+//import UserCreate from './components/UserCreate.vue' // Solo mockup
 import NewPatient from './components/NewPatient.vue' //JM
-import UpdatePatient from './components/UpdatePatient.vue' //JM
-import ReportEvolution from './components/ReportEvolution.vue' //JM
-import HistoricReport from './components/HistoricReport.vue' //JM
-import SuccessfullOperation  from './components/SuccessfullOperation.vue' //Solo mockup
+//import UpdatePatient from './components/UpdatePatient.vue' //JM
+//import ReportEvolution from './components/ReportEvolution.vue' //JM
+//import HistoricReport from './components/HistoricReport.vue' //JM
+//import SuccessfullOperation  from './components/SuccessfullOperation.vue' //Solo mockup
 
-const routes = [{
+const routes = [
+    {
         path: '/user/logIn',
         name: "logIn",
         component: LogIn,
@@ -24,7 +25,7 @@ const routes = [{
         component: SignUp,
         meta: { requiresAuth: false }
     },
-    {
+   /* {
         path: '/user/home',
         name: "home",
         component: Home,
@@ -35,14 +36,14 @@ const routes = [{
         name: "userCreate",
         component: UserCreate,
         meta: { requiresAuth: true }
-    },
+    },*/
     {
         path: '/user/newPatient',
         name: "newPatient",
         component: NewPatient,
-        meta: { requiresAuth: true }
+        meta: { requiresAuth: false }
     },
-    {
+   /* {
         path: '/user/updatePatient',
         name: "updatePatient",
         component: UpdatePatient,
@@ -65,7 +66,7 @@ const routes = [{
         name: "successfullOperation",
         component: SuccessfullOperation,
         meta: { requiresAuth: true }
-    }
+    }*/
 ];
 
 const router = createRouter({

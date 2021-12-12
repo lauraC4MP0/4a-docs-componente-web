@@ -115,7 +115,7 @@ export default {
           document.getElementById("day").value,
         phoneNumber: null,
         email: "",
-        bloodType: "",
+        bloodType: ""
       },
     };
   },
@@ -177,7 +177,7 @@ export default {
 body {
   font-family: "Open Sans", sans-serif;
   color: #1a1a1a;
-  background-color: #f0f0f0;
+  background-color: rgb(255 255 255 / 60%);
 }
 
 h1,

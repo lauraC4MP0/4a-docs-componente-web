@@ -15,7 +15,7 @@
     "graphql": "^16.1.0",
     "graphql-tag": "^2.12.6",
     "vue": "^3.0.0",
-    "vue-router": "^4.0.0-0",
+    "vue-router": "^4.0.12",
     "vuex": "^3.6.2"
   },
   "devDependencies": {
@@ -28,5 +28,10 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "description": "```\r npm install\r ```",
+  "main": "babel.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

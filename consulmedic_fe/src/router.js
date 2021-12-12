@@ -54,13 +54,13 @@ const routes = [
         name: "reportEvolution",
         component: ReportEvolution,
         meta: { requiresAuth: false }
-    },/*
+    },
     {
         path: '/user/historicReport',
         name: "historicReport",
         component: HistoricReport,
-        meta: { requiresAuth: true }
-    },
+        meta: { requiresAuth: false }
+    }/*,
     {
         path: '/user/successfullOperation',
         name: "successfullOperation",

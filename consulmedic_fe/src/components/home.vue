@@ -10,16 +10,16 @@
         </div>
         <br>
             <div class= "buttons1">
-                <a v-on="is_auth"><router-link to="/user/GERMAN/Desktop/"></router-link><input type="button" value="Crear Paciente"></a>
+                <a v-on="is_auth"><router-link to="/user/newPatient"></router-link><input type="button" value="Crear Paciente"></a>
                 <br>
                 <br>
-                <a href="PENDIENTE" target="_blank" onClick="window.open(this.href, this.target, 'width=900,height=800'); return false;"><input type="button" value="Actualizar Paciente"></a>
+                <a v-on="is_auth"><router-link to="/user/UpdatePatient"></router-link><input type="button" value="Actualizar Paciente"></a>
                 <br>
                 <br>
-                <a href="PENDIENTE" target="_blank" onClick="window.open(this.href, this.target, 'width=900,height=800'); return false;"><input type="button" value="Crear Reporte de Evolución"></a>
+                <a v-on="is_auth"><router-link to=""/user/reportEvolution"></router-link><input type="button" value="Crear Reporte de evolución"></a>
                 <br>
                 <br>
-                <a href="PENDIENTE" target="_blank" onClick="window.open(this.href, this.target, 'width=900,height=800'); return false;"><input type="button" value="Reporte Histórico por paciente"></a>
+                 <a v-on="is_auth"><router-link to=""/user/historicReport"></router-link><input type="button" value="Consulta reportes por paciente"></a>
         
             </div>
         </div>
@@ -127,7 +127,7 @@ font-family:'Open Sans Condensed', sans-serif;
   text-decoration: none;
     }
 
-.buttons1 input::hover {
+.buttons1 input:hover {
   background: #2079b0;
   background-image: -webkit-linear-gradient(top, #2079b0, #eb94d0);
   background-image: -moz-linear-gradient(top, #2079b0, #eb94d0);

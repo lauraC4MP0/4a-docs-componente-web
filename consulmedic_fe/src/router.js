@@ -2,15 +2,13 @@ import gql from "graphql-tag";
 import { createRouter, createWebHistory } from "vue-router";
 import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client/core'
 
-import LogIn                    from './components/LogIn.vue' // Jira y Mockup
-import SignUp                   from './components/SignUp.vue' //JM
-//import Home                     from './components/Home.vue' //JM
-//import UserCreate               from './components/UserCreate.vue' // Solo mockup
-import NewPatient               from './components/NewPatient.vue' //JM
-//import UpdatePatient            from './components/UpdatePatient.vue' //JM
-import ReportEvolution          from './components/ReportEvolution.vue' //JM
-//import HistoricReport           from './components/HistoricReport.vue' //JM
-//import SuccessfullOperation     from './components/SuccessfullOperation.vue' //Solo mockup
+import LogIn                    from './components/LogIn.vue'
+import SignUp                   from './components/SignUp.vue'
+//import Home                     from './components/Home.vue'
+import NewPatient               from './components/NewPatient.vue'
+import UpdatePatient            from './components/UpdatePatient.vue'
+import ReportEvolution          from './components/ReportEvolution.vue'
+//import HistoricReport           from './components/HistoricReport.vue'
 
 const routes = [
     {
@@ -30,12 +28,6 @@ const routes = [
         name: "home",
         component: Home,
         meta: { requiresAuth: true }
-    },
-    {
-        path: '/user/userCreate',
-        name: "userCreate",
-        component: UserCreate,
-        meta: { requiresAuth: true }
     },*/
     {
         path: '/user/newPatient',
@@ -43,12 +35,12 @@ const routes = [
         component: NewPatient,
         meta: { requiresAuth: false }
     },
-   /* {
+    {
         path: '/user/updatePatient',
         name: "updatePatient",
         component: UpdatePatient,
         meta: { requiresAuth: true }
-    },*/
+    },
     {
         path: '/user/reportEvolution',
         name: "reportEvolution",
@@ -59,12 +51,6 @@ const routes = [
         path: '/user/historicReport',
         name: "historicReport",
         component: HistoricReport,
-        meta: { requiresAuth: true }
-    },
-    {
-        path: '/user/successfullOperation',
-        name: "successfullOperation",
-        component: SuccessfullOperation,
         meta: { requiresAuth: true }
     }*/
 ];

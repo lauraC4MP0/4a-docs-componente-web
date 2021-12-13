@@ -9,71 +9,47 @@
         />
       </div>
       <div class="modal__content">
-        <h2>REPORTE MÉDICO DEL PACIENTE</h2>
-        <form v-on:submit.prevent="processReportEvolution">
+        <h2>ACTUALIZACIÓN DE DATOS DEL PACIENTE</h2>
+        <form v-on:submit.prevent="processUpdatePatient">
           <ul class="form-list">
-            <li class="form-list__row form-list__row--inline">
-              <div>
-                <label>Fecha de reporte<br><br><div class="date">{{this.date.toDateString()}}</div></label>
-                <br />
-              </div>
-            </li>
 
             <li class="form-list__row">
               <label>Doc. de identidad</label>
-              <input type="text" name="" required="" v-model="reportEvolution.idPatient"/>
+              <input type="text" name="" required="" v-model="updatePatient.id"/>
             </li>
 
             <li class="form-list__row">
-              <label>Peso</label>
-              <input type="text" name="" required="" v-model="reportEvolution.weight" />
+              <label>Nombres</label>
+              <input type="text" name="" required="" v-model="updatePatient.name"/>
             </li>
 
             <li class="form-list__row">
-              <label>Motivo de la consulta</label>
-              <input type="text" name="" required="" v-model="reportEvolution.reason_for_consultation"/>
+              <label>Apellidos</label>
+              <input type="text" name="" required="" v-model="updatePatient.lastname"/>
             </li>
 
             <li class="form-list__row">
-              <label>Enfermedad actual</label>
-              <input type="text" name="" required="" v-model="reportEvolution.current_illness"/>
+              <label>Teléfono</label>
+              <input type="text" name="" required="" v-model="updatePatient.phoneNumber"/>
             </li>
 
             <li class="form-list__row">
-              <label>Antecedentes</label>
-              <input type="text" name="" required="" v-model="reportEvolution.background"/>
-            </li>
-
-            <li class="form-list__row">
-              <label>Diagnóstico</label>
-              <input type="text" name="" required="" v-model="reportEvolution.diseaes"/>
-            </li>
-
-            <li class="form-list__row">
-              <label>Alergias</label>
-              <input type="text" name="" required="" v-model="reportEvolution.allergies"/>
-            </li>
-
-            <li class="form-list__row">
-              <label>Historia familiar de enfermedades</label>
-              <input type="text" name="" required="" v-model="reportEvolution.hereditary_family_history"/>
-            </li>
-
-            <li class="form-list__row">
-              <label>Examen físico</label>
-              <input type="text" name="" required="" v-model="reportEvolution.physical_exam"/>
-            </li>
-
-            <li class="form-list__row">
-              <label>Fórmula médica</label>
-              <input type="text" name="" required="" v-model="reportEvolution.medicines"/>
+              <label>Email</label>
+              <input type="text" name="" required="" v-model="updatePatient.email"/>
             </li>
 
             <li>
-              <button type="submit" class="button">
-                Crear Reporte
+              <button type="submit" class="button" onclick="format()" v-on:submit.prevent="processpatientById">
+                Buscar Paciente
               </button>
             </li>
+
+            <li>
+              <button type="submit" class="button" onclick="format()">
+                Actualizar Datos
+              </button>
+            </li>
+
           </ul>
         </form>
       </div>
@@ -85,86 +61,127 @@
 import gql from "graphql-tag";
 
 export default {
-  name: "ReportEvolution",
+  name: "UpdatePatient",
   data: function () {
     return {
-      reportEvolution: {
-        idPatient: null,
-        weight: "",
-        reason_for_consultation: "",
-        current_illness: "",
-        background: "",
-        diseases: "",
-        allergies: "",
-        hereditary_family_history: "",
-        physical_exam: "",
-        medicines: "",
-      },
-      date: null,
-    };
-  },
-  created: async function () {
-    let now=Date.now();
-    this.date=new Date(now);
-    console.log(this.date.getFullYear()+"-"+(this.date.getMonth()+1)+"-"+this.date.getDate());
-  },
+      updatePatient: {
+        id         : null,
+        name       : "",
+        lastname   : "",
+        dateBirth  : "",
+        phoneNumber: "",
+        email      : "",
+        bloodType  : ""
 
-  methods: {
-    processReportEvolution: async function () {
-      await this.$apollo
-        .mutate({
+    },
+  };
+},
+
+name: "FindById",
+  data: function () {
+    return {
+      patientById: {
+        id         : null,
+        name       : "",
+        lastname   : "",
+        dateBirth  : "",
+        phoneNumber: "",
+        email      : "",
+        bloodType  : "",
+        is_active  : ""
+    },
+  };
+},
+
+
+  methods: { 
+    processUpdatePatient: async function () {
+      await this.$apollo.mutate(
+        {
           mutation: gql`
-            mutation CreateReportEvolution(
-              $reportEvolution: ReportEvolutionInput!
-            ) {
-              createReportEvolution(reportEvolution: $reportEvolution) {
-                date
-                idPatient
-                age
-                weight
-                reason_for_consultation
-                current_illness
-                background
-                diseases
-                allergies
-                hereditary_family_history
-                physical_exam
-                medicines
+            mutation Mutation($patientInput: SignUpInputPatient) {
+              updatePatient(patientInput: $patientInput) {
+                id
+                name
+                lastname
+                dateBirth
+                phoneNumber
+                email
+                bloodType
+                is_active
               }
             }
           `,
-
+          
           variables: {
-            reportEvolution: this.reportEvolution,
+            patientInput: this.updatePatient,
           },
-        })
+        }
+        )
 
         .then((result) => {
-          let dataReportEvolution = {
-            date: result.data.createReportEvolution.date,
-            idPatient: result.data.createReportEvolution.idPatient,
-            age: result.data.createReportEvolution.age,
-            weight: result.data.createReportEvolution.weight,
-            reason_for_consultation:
-              result.data.createReportEvolution.reason_for_consultation,
-            current_illness: result.data.createReportEvolution.current_illness,
-            background: result.data.createReportEvolution.background,
-            diseases: result.data.createReportEvolution.diseases,
-            allergies: result.data.createReportEvolution.allergies,
-            hereditary_family_history:
-              result.data.createReportEvolution.hereditary_family_history,
-            physical_exam: result.data.createReportEvolution.physical_exam,
-            medicines: result.data.createReportEvolution.medicines,
+          let dataUpdatePatient = {
+            id         : result.data.updatePatient.id,
+            name       : result.data.updatePatient.name,
+            lastname   : result.data.updatePatient.lastname,
+            dateBirth  : result.data.updatePatient.dateBirth,
+            phoneNumber: result.data.updatePatient.phoneNumber,
+            email      : result.data.updatePatient.email,
+            bloodType  : result.data.updatePatient.bloodType,
           };
-          this.$emit("completedReportEvolution", dataReportEvolution);
-        })
+          this.$emit("completedUpdatePatient", dataUpdatePatient);
+        }
+        )
         .catch((error) => {
           console.log(error);
-          alert(
-            "ERROR 404: Verifique que el documento de identidad del paciente es correcto"
-          );
+          alert("ERROR 404: Los datos del paciente no se actualizaron");
         });
     },
+
+    processpatientById: async function () {
+      await this.$apollo.query(
+        {
+          query: gql`
+            query Query($patientByIdId: Int) {
+              patientById(id: $patientByIdId) {
+                id
+                name
+                lastname
+                dateBirth
+                phoneNumber
+                email
+                bloodType
+                is_active
+              }
+            }
+          `,
+          
+          variables: {
+            patientByIdId: this.patientById,
+          },
+        }
+        )
+
+        .then((result) => {
+          let datapatientById = {
+            id         : result.data.patientById.id,
+            name       : result.data.patientById.name,
+            lastname   : result.data.patientById.lastname,
+            dateBirth  : result.data.patientById.dateBirth,
+            phoneNumber: result.data.patientById.phoneNumber,
+            email      : result.data.patientById.email,
+            bloodType  : result.data.patientById.bloodType,
+          };
+          this.$emit("completedpatientById", datapatientById);
+        }
+        )
+        .catch((error) => {
+          console.log(error);
+          alert("ERROR 404: No de identificación no encontrado");
+        });
+    },
+
+
   },
 };
 </script>
@@ -194,17 +211,6 @@ h4,
 h5 {
   margin: 0;
   font-weight: 600;
-}
-.date{
-    width: calc(100% - 10px);
-  min-height: 30px;
-  padding-left: 5px;
-  padding-right: 5px;
-  letter-spacing: 0.5px;
-  border: 0;
-  border-bottom: 2px solid #f0f0f0;
-  color:#000;
-
 }
 
 .button {
@@ -296,6 +302,7 @@ input:focus {
   margin-bottom: 25px;
 }
 .form-list__row select {
+
   display: inline-block;
   width: 80px;
   cursor: pointer;
@@ -313,7 +320,7 @@ input:focus {
   border-radius: 12px;
   position: relative;
   transition: all 0.25s ease;
-}
+} 
 .form-list__row select::-ms-expand {
   display: none;
 }
@@ -384,7 +391,7 @@ input:focus {
   top: 50%;
   width: 36px;
   height: 45px;
-  background-image: url("https://www.freepik.es/foto-gratis/manos-doctora-irreconocible-escribiendo-forma-escribiendo-teclado-portatil_5839269.htm#page=1&query=medicina&position=1&from_view=search");
+  background-image: url("reporteFoto.jpg") no-repeat center center fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: 36px;
@@ -401,7 +408,7 @@ input:focus {
   align-items: center;
   height: 100vh;
   width: 100vw;
-  padding-top: 600px; /*aumenté de 200 a 600px*/
+  padding-top: 200px;
   z-index: 100;
   overflow-y: auto;
 }

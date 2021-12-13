@@ -4,7 +4,7 @@ import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client/core
 
 import LogIn                    from './components/LogIn.vue' // Jira y Mockup
 import SignUp                   from './components/SignUp.vue' //JM
-//import Home                     from './components/Home.vue' //JM
+import Home                     from './components/home.vue' //JM
 //import UserCreate               from './components/UserCreate.vue' // Solo mockup
 import NewPatient               from './components/NewPatient.vue' //JM
 //import UpdatePatient            from './components/UpdatePatient.vue' //JM
@@ -25,13 +25,13 @@ const routes = [
         component: SignUp,
         meta: { requiresAuth: false }
     },
-   /* {
+    {
         path: '/user/home',
         name: "home",
         component: Home,
-        meta: { requiresAuth: true }
+        meta: { requiresAuth: false }
     },
-    {
+   /* {
         path: '/user/userCreate',
         name: "userCreate",
         component: UserCreate,

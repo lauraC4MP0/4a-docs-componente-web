@@ -2,15 +2,14 @@ import gql from "graphql-tag";
 import { createRouter, createWebHistory } from "vue-router";
 import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client/core'
 
-
+import App                      from './App.vue'
 import LogIn                    from './components/LogIn.vue' // Jira y Mockup
 import SignUp                   from './components/SignUp.vue' //JM
 import Home                     from './components/home.vue' //JM
-//import UserCreate               from './components/UserCreate.vue' // Solo mockup
 import NewPatient               from './components/NewPatient.vue' //JM
-//import UpdatePatient            from './components/UpdatePatient.vue' //JM
+import UpdatePatient            from './components/UpdatePatient.vue' //JM
 import ReportEvolution          from './components/ReportEvolution.vue' //JM
-//import HistoricReport           from './components/HistoricReport.vue' //JM
+import HistoricReport           from './components/HistoricReport.vue' //JM
 //import SuccessfullOperation     from './components/SuccessfullOperation.vue' //Solo mockup
 
 
@@ -18,10 +17,16 @@ import ReportEvolution          from './components/ReportEvolution.vue' //JM
 
 const routes = [
     {
+        path: '/',
+        name: 'root',
+        component: App,
+        
+      },
+    {
         path: '/user/logIn',
         name: "logIn",
         component: LogIn,
-        meta: { requiresAuth: true }
+        meta: { requiresAuth: false }
     },
     {
         path: '/user/signUp',
@@ -46,26 +51,26 @@ const routes = [
         path: '/user/newPatient',
         name: "newPatient",
         component: NewPatient,
-        meta: { requiresAuth: true }
+        meta: { requiresAuth: false }
     },
     {
         path: '/user/updatePatient',
         name: "updatePatient",
         component: UpdatePatient,
-        meta: { requiresAuth: true }
+        meta: { requiresAuth: false }
     },
     {
         path: '/user/reportEvolution',
         name: "reportEvolution",
         component: ReportEvolution,
-        meta: { requiresAuth: true }
-    },/*
+        meta: { requiresAuth: false }
+    },
     {
         path: '/user/historicReport',
         name: "historicReport",
         component: HistoricReport,
-        meta: { requiresAuth: true }
-    }*/
+        meta: { requiresAuth: false }
+    }
 ];
 
 const router = createRouter({

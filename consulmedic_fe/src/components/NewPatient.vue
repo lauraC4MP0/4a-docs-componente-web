@@ -101,7 +101,7 @@
     </li>
 
     <li>
-          <b class="about"> <router-link to="/user/reportEvolution"><span>Consultar Paciente</span></router-link>
+          <b class="about"> <router-link to="/user/updatePatient"><span>Actualizar Paciente</span></router-link>
             
         </b>
         

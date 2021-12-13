@@ -28,7 +28,7 @@
       <li><a v-if="!is_auth"> Servicios</a></li>
       <li><a v-if="!is_auth"> Contactenos</a></li>
 
-     <li> <a v-if="is_auth"><router-link to="/home"> Inicio</router-link></a>
+     <li> <a v-if="is_auth"><router-link to="/user"> Inicio</router-link></a>
     </li>
     
     <li>
@@ -67,7 +67,7 @@
 
 <script>
 export default {
-  name: "logIn",
+  name: "App",
   data: function () {
     return {
       is_auth: false,

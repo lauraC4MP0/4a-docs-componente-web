@@ -77,6 +77,17 @@
           </ul>
         </form>
       </div>
+       <ul id="navigationMenu">
+    <li>
+        <b class="home"> <router-link to="/user/reportEvolution"><span>Crear Reporte</span></router-link></b>
+    </li>
+
+    <li>
+          <b class="about"> <router-link to="/user/historicReport"><span>Consultar Reportes</span></router-link>
+        </b>
+    </li>
+    
+</ul>
     </div>
   </div>
 </template>

@@ -28,7 +28,7 @@
       <li><a v-if="!is_auth"> Servicios</a></li>
       <li><a v-if="!is_auth"> Contactenos</a></li>
 
-     <li> <a v-if="is_auth"><router-link to="/home"> Inicio</router-link></a>
+     <li> <a v-if="is_auth"><router-link to="/user"> Inicio</router-link></a>
     </li>
     
     <li>
@@ -57,8 +57,8 @@
       <router-view
         v-on:completedLogIn="completedLogIn"
         v-on:completedSignUp="completedSignUp"
-        v-on:completedNewProduct="completedNewProduct"
-        v-on:competedDeleteProduct="completedDeleteProduct"
+        v-on:completedNewPatient="completedNewPatient"
+        v-on:completedReportEvolution="completedReportEvolution"
       >
       </router-view>
     </div>
@@ -67,7 +67,7 @@
 
 <script>
 export default {
-  name: "logIn",
+  name: "App",
   data: function () {
     return {
       is_auth: false,
@@ -93,7 +93,7 @@ export default {
       this.$router.push({ name: "logIn" });
     },
     completedLogIn: function (data) {
-      const userId = "123";
+      //const userId = "123";
       localStorage.setItem("isAuth", true);
       localStorage.setItem("username", data.id);
       localStorage.setItem("token_access", data.token_access);
@@ -105,15 +105,20 @@ export default {
       //this.$session.start();
       //this.$router.push({name: "newProduct", params:{ username: username }})
       //this.$router.push({ path: '/user', params: {username} })
-      this.$router.push({ name: "newPatient" });
+      this.$router.push({ name: "/home" });
     },
     completedSignUp: function (data) {
       alert("Registro Exitoso");
       this.$router.push("/user/logIn");
     },
-    completedNewProduct: function (data){
-      alert("Producto agregado exitosamente");
+    completedNewPatient: function (data){
+      alert("Paciente agregado correctamente");
       },
+
+      completedReportEvolution: function (data){
+      alert("Reporte agregado correctamente");
+      },
+    
     
       },
   created: function () {
@@ -186,6 +191,7 @@ background: #ffffff;
 }
 
 .menu_bar nav ul li {
+  cursor: pointer;
   display: inline-block;
 }
 

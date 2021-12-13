@@ -35,8 +35,8 @@ export default {
     },
 
     methods: {
-        processLogInUser: async function() {
-            await this.$apollo
+        processLogInUser: function() {
+            this.$apollo
                 .mutate({
                     mutation: gql`
                         mutation($credentials: CredentialsInput!) {
@@ -53,9 +53,9 @@ export default {
 
             .then((result) => {
                 let dataLogIn = {
-                    id: this.user.id,
-                    token_access: result.data.access,
-                    token_refresh: result.data.refresh,
+                    id: this.user.username,
+                    access_token: result.data.access,
+                    refresh_token: result.data.refresh,
                 };
                 this.$emit('completedLogIn', dataLogIn)
             })

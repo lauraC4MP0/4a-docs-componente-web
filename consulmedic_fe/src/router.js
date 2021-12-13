@@ -84,39 +84,21 @@ const apolloClient = new ApolloClient({
 })
 
 async function isAuth() {
-    if (localStorage.getItem("token_access") === null || localStorage.getItem("token_refresh") === null) {
-        return false;
-    }
-
-    try {
-        var result = await apolloClient.mutate({
-            mutation: gql `
-                mutation ($refresh: String!) {
-                    refreshToken(refresh: $refresh) {
-                        access
-                    }
-                }
-            `,
-            variables: {
-                refresh: localStorage.getItem("token_refresh"),
-            },
-        })
-
-        localStorage.setItem("token_access", result.data.refreshToken.access);
-        return true;
-    } catch {
-        localStorage.clear();
-        alert("Su sesión expiró, por favor vuelva a iniciar sesión");
-        return false;
-    }
+    const access_token = localStorage.getItem('access_token');
+    const refresh_token = localStorage.getItem('refresh_token');
+    return access_token && refresh_token;
 }
 
-router.beforeEach(async(to, from) => {
-    var is_auth = await isAuth();
-
-    if (is_auth == to.meta.requiresAuth) return true
-    if (is_auth) return { name: "home" };
-    return { name: "logIn" };
-})
+router.beforeEach(async (to) => {
+    if (to.meta.requireAuth) {
+        if (await isAuth()) {
+            return true
+        } else {
+            return { name: 'logIn' };
+        }
+    } else {
+        return true;
+    }
+});
 
 export default router;

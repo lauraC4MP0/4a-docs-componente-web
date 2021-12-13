@@ -88,16 +88,17 @@ export default {
       this.$router.push({ name: "signUp" });
     },
     logout: function (data) {
-      localStorage.removeItem(data.token_access);
+      localStorage.removeItem(data.access_token);
       this.is_auth = false;
       this.$router.push({ name: "logIn" });
     },
     completedLogIn: function (data) {
+      console.log(data);
       //const userId = "123";
       localStorage.setItem("isAuth", true);
       localStorage.setItem("username", data.id);
-      localStorage.setItem("token_access", data.token_access);
-      localStorage.setItem("token_refresh", data.token_refresh);
+      localStorage.setItem("access_token", data.access_token);
+      localStorage.setItem("refresh_token", data.refresh_token);
       alert("Autenticación Exitosa");
       /*para mantener la sesion*/
       this.is_auth = true;
@@ -105,11 +106,11 @@ export default {
       //this.$session.start();
       //this.$router.push({name: "newProduct", params:{ username: username }})
       //this.$router.push({ path: '/user', params: {username} })
-      this.$router.push({ name: "/home" });
+      this.$router.push({ name: "home" });
     },
     completedSignUp: function (data) {
       alert("Registro Exitoso");
-      this.$router.push("/user/logIn");
+      this.$router.push({ name: "logIn" });
     },
     completedNewPatient: function (data){
       alert("Paciente agregado correctamente");

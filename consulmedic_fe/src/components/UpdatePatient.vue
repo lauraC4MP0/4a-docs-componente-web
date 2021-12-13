@@ -14,7 +14,7 @@
           <ul class="form-list">
 
             <li class="form-list__row">
-              <label>Doc. de identidad</label>
+              <label>Documento de identidad</label>
               <input type="text" name="" required="" v-model="updatePatient.id"/>
             </li>
 
@@ -77,7 +77,7 @@ export default {
   };
 },
 
-name: "FindById",
+/*name: "FindById",
   data: function () {
     return {
       patientById: {
@@ -91,7 +91,7 @@ name: "FindById",
         is_active  : ""
     },
   };
-},
+},*/
 
 
   methods: { 
@@ -138,7 +138,7 @@ name: "FindById",
         });
     },
 
-    processpatientById: async function () {
+    /*processpatientById: async function () {
       await this.$apollo.query(
         {
           query: gql`
@@ -179,7 +179,7 @@ name: "FindById",
           console.log(error);
           alert("ERROR 404: No de identificación no encontrado");
         });
-    },
+    },*/
   },
 };
 </script>

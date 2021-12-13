@@ -6,29 +6,29 @@
             <br>
             <br>
             <br>
-            <h1>BIENVENIDO A CONSULMEDIC: 
-                <span>{{userDetailById.name}}</span>
-            </h1> 
             <br>
             <br>
-            <br>    
-            <h2>Selecciona una opción</h2>
-        </div>
+            <br> 
+                
+            </div>
         <br>
         <div class = "home_patient">
+            <h1>BIENVENIDO A CONSULMEDIC: 
+                <span>{{userDetailById.name}}</span>
+            </h1>
             <h3>Pacientes</h3>
         </div>
         <br>
         <div class= "home_buttons_patient">
-            <a href="PENDIENTE" target="_blank" onClick="window.open(this.href, this.target, 'width=900,height=800'); return false;"><input type="button" value="Crear Paciente"></a>
-            <a href="PENDIENTE" target="_blank" onClick="window.open(this.href, this.target, 'width=900,height=800'); return false;"><input type="button" value="Actualizar Paciente"></a>
+            <a href="/user/newPatient" ><input type="button" value="Crear Paciente"></a>
+            <a href="/user/updatePatient" target="_blank" onClick="window.open(this.href, this.target, 'width=900,height=800'); return false;"><input type="button" value="Actualizar Paciente"></a>
         </div>
         <div class = "home_report">
             <h3>Historia Clínica</h3>
         </div>
         <div class= "home_buttons_report">
-            <a href="PENDIENTE" target="_blank" onClick="window.open(this.href, this.target, 'width=900,height=800'); return false;"><input type="button" value="Crear Reporte de Evolución"></a>
-            <a href="PENDIENTE" target="_blank" onClick="window.open(this.href, this.target, 'width=900,height=800'); return false;"><input type="button" value="Reporte Histórico por paciente"></a>
+            <a href="/user/reportEvolution" target="_blank" onClick="window.open(this.href, this.target, 'width=900,height=800'); return false;"><input type="button" value="Crear Reporte de Evolución"></a>
+            <a href="/user/historicReport" target="_blank" onClick="window.open(this.href, this.target, 'width=900,height=800'); return false;"><input type="button" value="Reporte Histórico por paciente"></a>
         </div>
 
         <div class = "logout">
@@ -50,7 +50,7 @@ export default {
 
     data: function () {
         return {
-            userId: jwt_decode(localStorage.getItem("token_refresh")).user_id,
+            //userId: jwt_decode(localStorage.getItem("refresh_token")).userId,
             userDetailById: {
                 username: "",
                 contraseña: "",
@@ -99,6 +99,11 @@ export default {
     display: inline-block;    
 }
 
+.home_buttons_patient input{
+    cursor: pointer;
+}
+
+
 .home_buttons_report{
     width: 260px;
     height: 260px;
@@ -106,6 +111,10 @@ export default {
     background: rgba(3,3,3,0.25);
     box-shadow: 1px 1px 50px #000;
     display: inline-block;
+}
+
+.home_buttons_report input{
+    cursor: pointer;
 }
 
 

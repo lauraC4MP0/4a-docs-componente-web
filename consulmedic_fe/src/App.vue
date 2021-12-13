@@ -76,9 +76,9 @@ export default {
   components: {},
   methods: {
     verifyAuth: function () {
-      if (this.is_auth == false) {
+    /*  if (this.is_auth == false) {
         this.$router.push({ name: "logIn" });
-      }
+      }*/
     },
     loadLogIn: function () {
       this.$router.push({ name: "logIn" });

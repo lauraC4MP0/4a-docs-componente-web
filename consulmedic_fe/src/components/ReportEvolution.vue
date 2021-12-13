@@ -21,7 +21,7 @@
 
             <li class="form-list__row">
               <label>Doc. de identidad</label>
-              <input type="text" name="" required v-model="reportEvolution.idPatient"/>
+              <input type="text" name="" required="" v-model="reportEvolution.idPatient"/>
             </li>
 
             <li class="form-list__row">
@@ -384,28 +384,12 @@ input:focus {
   top: 50%;
   width: 36px;
   height: 45px;
-  background-image: url("https://www.freepik.es/foto-gratis/manos-doctora-irreconocible-escribiendo-forma-escribiendo-teclado-portatil_5839269.htm#page=1&query=medicina&position=1&from_view=search");
+  background-image: url("reporteFoto.jpg") no-repeat center center fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: 36px;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
-}
-
-#input--cc.creditcard-icon--visa:before {
-  background-image: url("https://www.freepik.es/foto-gratis/manos-doctora-irreconocible-escribiendo-forma-escribiendo-teclado-portatil_5839269.htm#page=1&query=medicina&position=1&from_view=search");
-}
-
-#input--cc.creditcard-icon--master-card:before {
-  background-image: url("https://www.freepik.es/foto-gratis/manos-doctora-irreconocible-escribiendo-forma-escribiendo-teclado-portatil_5839269.htm#page=1&query=medicina&position=1&from_view=search");
-}
-
-#input--cc.creditcard-icon--american-express:before {
-  background-image: url("https://www.freepik.es/foto-gratis/manos-doctora-irreconocible-escribiendo-forma-escribiendo-teclado-portatil_5839269.htm#page=1&query=medicina&position=1&from_view=search");
-}
-
-#input--cc.creditcard-icon--discover:before {
-  background-image: url("https://www.freepik.es/foto-gratis/manos-doctora-irreconocible-escribiendo-forma-escribiendo-teclado-portatil_5839269.htm#page=1&query=medicina&position=1&from_view=search");
 }
 
 .modal {

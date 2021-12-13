@@ -4,7 +4,7 @@ import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client/core
 
 import LogIn                    from './components/LogIn.vue'
 import SignUp                   from './components/SignUp.vue'
-//import Home                     from './components/Home.vue'
+//import home                     from './components/home.vue'
 import NewPatient               from './components/NewPatient.vue'
 import UpdatePatient            from './components/UpdatePatient.vue'
 import ReportEvolution          from './components/ReportEvolution.vue'
@@ -15,25 +15,25 @@ const routes = [
         path: '/user/logIn',
         name: "logIn",
         component: LogIn,
-        meta: { requiresAuth: false }
+        meta: { requiresAuth: true }
     },
     {
         path: '/user/signUp',
         name: "signUp",
         component: SignUp,
-        meta: { requiresAuth: false }
-    },
-   /* {
+        meta: { requiresAuth: true }
+    },/*
+    {
         path: '/user/home',
         name: "home",
-        component: Home,
+        component: home,
         meta: { requiresAuth: true }
     },*/
     {
         path: '/user/newPatient',
         name: "newPatient",
         component: NewPatient,
-        meta: { requiresAuth: false }
+        meta: { requiresAuth: true }
     },
     {
         path: '/user/updatePatient',
@@ -45,7 +45,7 @@ const routes = [
         path: '/user/reportEvolution',
         name: "reportEvolution",
         component: ReportEvolution,
-        meta: { requiresAuth: false }
+        meta: { requiresAuth: true }
     },/*
     {
         path: '/user/historicReport',

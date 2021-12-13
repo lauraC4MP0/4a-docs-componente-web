@@ -2,6 +2,7 @@ import gql from "graphql-tag";
 import { createRouter, createWebHistory } from "vue-router";
 import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client/core'
 
+
 import LogIn                    from './components/LogIn.vue' // Jira y Mockup
 import SignUp                   from './components/SignUp.vue' //JM
 import Home                     from './components/home.vue' //JM
@@ -12,17 +13,21 @@ import ReportEvolution          from './components/ReportEvolution.vue' //JM
 //import HistoricReport           from './components/HistoricReport.vue' //JM
 //import SuccessfullOperation     from './components/SuccessfullOperation.vue' //Solo mockup
 
+
+
+
 const routes = [
     {
         path: '/user/logIn',
         name: "logIn",
         component: LogIn,
-        meta: { requiresAuth: false }
+        meta: { requiresAuth: true }
     },
     {
         path: '/user/signUp',
         name: "signUp",
         component: SignUp,
+
         meta: { requiresAuth: false }
     },
     {
@@ -41,30 +46,24 @@ const routes = [
         path: '/user/newPatient',
         name: "newPatient",
         component: NewPatient,
-        meta: { requiresAuth: false }
+        meta: { requiresAuth: true }
     },
-   /* {
+    {
         path: '/user/updatePatient',
         name: "updatePatient",
         component: UpdatePatient,
         meta: { requiresAuth: true }
-    },*/
+    },
     {
         path: '/user/reportEvolution',
         name: "reportEvolution",
         component: ReportEvolution,
-        meta: { requiresAuth: false }
+        meta: { requiresAuth: true }
     },/*
     {
         path: '/user/historicReport',
         name: "historicReport",
         component: HistoricReport,
-        meta: { requiresAuth: true }
-    },
-    {
-        path: '/user/successfullOperation',
-        name: "successfullOperation",
-        component: SuccessfullOperation,
         meta: { requiresAuth: true }
     }*/
 ];

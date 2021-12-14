@@ -77,7 +77,7 @@ export default {
   };
 },
 
-/*name: "FindById",
+name: "FindById",
   data: function () {
     return {
       patientById: {
@@ -91,7 +91,7 @@ export default {
         is_active  : ""
     },
   };
-},*/
+},
 
 
   methods: { 
@@ -138,11 +138,11 @@ export default {
         });
     },
 
-    /*processpatientById: async function () {
+    processpatientById: async function () {
       await this.$apollo.query(
         {
           query: gql`
-            query Query($patientByIdId: Int) {
+            query PatientById($patientByIdId: Int) {
               patientById(id: $patientByIdId) {
                 id
                 name
@@ -179,7 +179,7 @@ export default {
           console.log(error);
           alert("ERROR 404: No de identificación no encontrado");
         });
-    },*/
+    },
   },
 };
 </script>

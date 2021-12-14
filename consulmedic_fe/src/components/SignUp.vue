@@ -82,13 +82,14 @@
 
 <script>
 import gql from "graphql-tag";
+import axios from "axios";
 
 export default {
   name: "SignUp",
   data: function () {
     return {
       user: {
-        id: "",
+        id: null,
         username: "",
         password: "",
         name: "",
@@ -126,6 +127,7 @@ export default {
       if (validation) {
 		  console.log(this.user);
 		  console.log(this.user.email);
+		  /*
         await this.$apollo
           .mutate({
             mutation: gql`
@@ -160,7 +162,18 @@ export default {
           .catch((error) => {
             console.log(error);
             alert("ERROR: "+error);
-          });
+          });*/
+		axios.post('http://consulmedic-user-ms.herokuapp.com/user',this.user,{headers:{},}).then((result)=>{
+			let dataSignUp={
+				id:this.user.id,
+				token_access: result.data.access,
+              	token_refresh: result.data.refresh,
+			};
+			this.$emit("completedSignUp",dataSignUp);
+		}).catch((error)=>{
+			console.log(error);
+			alert("Ha ocurrido un error en el registro");
+		});
       }
     },
   },

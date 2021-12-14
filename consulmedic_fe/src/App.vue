@@ -1,5 +1,6 @@
 <template>
-  <div id="app" class="app">
+  <div modal id="app" class="app">
+    
     <div class="menu">
       <nav>
         <a href="https://www.colsubsidio.com/?hsLang=es" class="metricas-AccesosRapidos" data-seccion="Gestiona tus citas médicas | Colsubsidio">
@@ -128,13 +129,15 @@ export default {
    // },
     completedSignUp: function (data) {
       alert("Registro Exitoso");
-      this.$router.push("/user/logIn");
+      this.$router.push("logIn");
     },
     completedNewPatient: function (data){
       alert("Paciente agregado correctamente");
+       location.reload();
       },
       completedReportEvolution: function (data){
       alert("Reporte agregado correctamente");
+       location.reload();
       },
     
     

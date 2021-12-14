@@ -398,7 +398,7 @@ input:focus {
   margin-right: 5px;
 }
 
-.modal {
+.NewPatient {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: center;

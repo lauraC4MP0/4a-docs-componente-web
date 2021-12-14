@@ -53,9 +53,9 @@ export default {
 
             .then((result) => {
                 let dataLogIn = {
-                    id: this.user.id,
-                    token_access: result.data.access,
-                    token_refresh: result.data.refresh,
+                    id: this.user.username,
+                    token_access: result.data.logIn.access,
+                    token_refresh: result.data.logIn.refresh,
                 };
                 this.$emit('completedLogIn', dataLogIn)
             })

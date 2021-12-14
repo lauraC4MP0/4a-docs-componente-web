@@ -1,22 +1,22 @@
 <template>
 
-   <div class="home">
+   <div class="homes">
     <div class = "home_container">
         <div class = "home_content">
             <br>
             <br>
             <br>
-            <h1>BIENVENIDO A CONSULMEDIC: 
-                <span>{{userDetailById.name}}</span>
-            </h1> 
+            
+            
             <br>
             <br>
             <br>    
-            <h2>Selecciona una opción</h2>
+            
         </div>
         <br>
+        <h1>Bienvenido {{ userDetailById.username }}</h1>
         <div class = "home_patient">
-            <h3>Pacientes</h3>
+            
         </div>
         <br>
         <div class= "home_buttons_patient">
@@ -24,7 +24,7 @@
             <a href="PENDIENTE" target="_blank" onClick="window.open(this.href, this.target, 'width=900,height=800'); return false;"><input type="button" value="Actualizar Paciente"></a>
         </div>
         <div class = "home_report">
-            <h3>Historia Clínica</h3>
+            
         </div>
         <div class= "home_buttons_report">
             <a href="PENDIENTE" target="_blank" onClick="window.open(this.href, this.target, 'width=900,height=800'); return false;"><input type="button" value="Crear Reporte de Evolución"></a>
@@ -50,10 +50,11 @@ export default {
 
     data: function () {
         return {
-            userId: jwt_decode(localStorage.getItem("token_refresh")).user_id,
+            idUser: jwt_decode(localStorage.getItem("token_refresh")).user_id,
+            
             userDetailById: {
                 username: "",
-                contraseña: "",
+                
             },
         };
     },
@@ -61,16 +62,16 @@ export default {
     apollo: {
         userDetailById: {
             query: gql`
-                query ($userId: Int!) {
-                    userDetailById(userId: $userId) {
-                        username
-                    }
-                }
+  query Query($idUser: Int!) {
+  userDetailById(idUser: $idUser) {
+    username
+  }
+}
             `,
 
         variables() {
             return {
-                userId: this.userId,
+                idUser: this.idUser,
             };
         }
         },
@@ -81,7 +82,7 @@ export default {
 
 <style>
 
-.home{
+.homes{
     height: 100%;
     width: 100%;
     background: url("consulmedicinicio.png") no-repeat center center fixed; 

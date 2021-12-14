@@ -1,7 +1,6 @@
 import gql from "graphql-tag";
 import { createRouter, createWebHistory } from "vue-router";
 import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client/core'
-
 import App                      from './App.vue'
 import LogIn                    from './components/LogIn.vue' // Jira y Mockup
 import SignUp                   from './components/SignUp.vue' //JM
@@ -39,7 +38,7 @@ const routes = [
         path: '/user/home',
         name: "home",
         component: Home,
-        meta: { requiresAuth: false }
+        meta: { requiresAuth: true }
     },
    /* {
         path: '/user/userCreate',
@@ -48,22 +47,22 @@ const routes = [
         meta: { requiresAuth: true }
     },*/
     {
-        path: '/user/newPatient',
+        path: '/patients',
         name: "newPatient",
         component: NewPatient,
-        meta: { requiresAuth: false }
+        meta: { requiresAuth: true }
     },
     {
         path: '/user/updatePatient',
         name: "updatePatient",
         component: UpdatePatient,
-        meta: { requiresAuth: false }
+        meta: { requiresAuth:true }
     },
     {
         path: '/user/reportEvolution',
         name: "reportEvolution",
         component: ReportEvolution,
-        meta: { requiresAuth: false }
+        meta: { requiresAuth: true }
     },
     {
         path: '/user/historicReport',
@@ -79,7 +78,7 @@ const router = createRouter({
 });
 
 const apolloClient = new ApolloClient({
-    link: createHttpLink({ uri: 'https://consulmedic-api.herokuapp.com/' }),
+    link: createHttpLink({ uri: 'http://localhost:4000/' }),
     cache: new InMemoryCache()
 })
 
@@ -91,11 +90,11 @@ async function isAuth() {
     try {
         var result = await apolloClient.mutate({
             mutation: gql `
-                mutation ($refresh: String!) {
-                    refreshToken(refresh: $refresh) {
-                        access
-                    }
+            mutation Mutation($refresh: String!) {
+                refreshToken(refresh: $refresh) {
+                  access
                 }
+              }
             `,
             variables: {
                 refresh: localStorage.getItem("token_refresh"),

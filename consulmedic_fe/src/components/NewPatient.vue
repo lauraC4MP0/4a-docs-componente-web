@@ -1,5 +1,5 @@
 <template>
-  <div class="modal">
+  <div id=newPatient class="NewPatient">
     <div class="modal__container">
       <div class="modal__featured">
         <div class="modal__circle"></div>
@@ -10,11 +10,11 @@
       </div>
       <div class="modal__content">
         <h2>NUEVO PACIENTE</h2>
-        <form v-on:submit.prevent="processNewPatient">
+        <form v-on:submit.prevent="signUpPatient">
           <ul class="form-list">
             <li class="form-list__row">
               <label>Número de identificación</label>
-              <input type="text" name="" required v-model="patient.id" />
+              <input type="number" name="" required v-model="patient.id" />
             </li>
             <li class="form-list__row">
               <label>Nombres</label>
@@ -61,7 +61,7 @@
             </li>
             <li class="form-list__row">
               <label>Número de celular</label>
-              <input type="text" name="" required v-model="patient.phoneNumber"/>
+              <input type="number" name="" required v-model="patient.phoneNumber"/>
             </li>
             <li class="form-list__row">
               <label>Email</label>
@@ -96,26 +96,17 @@
       <ul id="navigationMenu">
     <li>
         <b class="home"> <router-link to="/user/newPatient"><span>Crear Paciente</span></router-link></b>
-            
-        
     </li>
 
     <li>
           <b class="about"> <router-link to="/user/updatePatient"><span>Actualizar Paciente</span></router-link>
-            
         </b>
-        
     </li>
-
-    
-
     <li>
         <b class="portfolio" href="#">
             <span>Eliminar Paciente</span>
         </b>
     </li>
-
-    
 </ul>
     </div>
   </div>
@@ -144,7 +135,7 @@ export default {
   },
   created: async function () {},
   methods: {
-    processNewPatient: async function () {
+    signUpPatient: async function () {
       this.patient.dateBirth =
         "" +
         document.getElementById("year").value +
@@ -158,18 +149,17 @@ export default {
       await this.$apollo
         .mutate({
           mutation: gql`
-            mutation Mutation {
-              signUpPatient {
-                id
-                name
-                lastname
-                dateBirth
-                phoneNumber
-                email
-                bloodType
-                is_active
-              }
-            }
+     mutation SignUpPatient($patientInput: SignUpInputPatient) {
+          signUpPatient(patientInput: $patientInput) {
+            id
+            name
+            lastname
+            dateBirth
+            phoneNumber
+            email
+            bloodType
+          }
+}
           `,
           variables: {
             patientInput: this.patient,
@@ -185,7 +175,7 @@ export default {
             email: this.patient.email,
             bloodType: this.patient.bloodType,
           };
-          console.log(dataNewPatient);
+          console.log(result);
           this.$emit("completedNewPatient", dataNewPatient);
         })
         .catch((error) => {

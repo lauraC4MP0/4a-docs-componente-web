@@ -1,4 +1,5 @@
 <template>
+<div id="signUp" class="SignUp">
   <div class="main-container">
     <br />
     <center>
@@ -7,7 +8,7 @@
       </div>
     </center>
     <div class="signup-container">
-      <form action="" class="form-signup" v-on:submit.prevent="processSingUp">
+      <form action="" class="form-signup" v-on:submit.prevent="signUpUser">
         <ul class="signup-nav">
           <li class="signup-nav__item active">
             <a href="#">Crear cuenta</a>
@@ -19,7 +20,7 @@
         <input
           id="signup-input-id"
           class="signup__input"
-          type="text"
+          type="number"
           v-model="user.id"
         />
         <label for="signup-input-user" class="signup__label"> Username </label>
@@ -71,12 +72,13 @@
         />
         <br />
         <br />
-        <button class="signup__submit" type="submit" id="signup">
+        <button class="signup__submit" type="submit">
           Registrarse
         </button>
       </form>
       <a href="#" class="login">¿Ya tienes cuenta? Inicia sesión</a>
     </div>
+  </div>
   </div>
 </template>
 
@@ -101,9 +103,9 @@ export default {
       b: document.getElementById("signup"),
     };
   },
-  created: async function () {},
+  //created: async function () {},
   methods: {
-    processSingUp: async function () {
+    signUpUser: async function () {
       this.pass1 = document.getElementById("signup-input-password").value;
       this.pass2 = document.getElementById("signup-input-password2").value;
       console.log(this.pass1 + "..." + this.pass2);
@@ -126,8 +128,8 @@ export default {
       if (validation) {
 		  console.log(this.user);
 		  console.log(this.user.email);
-        await this.$apollo
-          .mutate({
+
+        await this.$apollo.mutate({
             mutation: gql`
               mutation Mutation($userInput: SignUpInput) {
                 signUpUser(userInput: $userInput) {
@@ -139,7 +141,7 @@ export default {
                   email
                 }
               }
-            `,
+             `,
             variables: {
               userInput: this.user,
             },

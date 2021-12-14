@@ -1,4 +1,5 @@
 <template>
+<div id="reportEvolution" class="ReportEvolution">
   <div class="modal">
     <div class="modal__container">
       <div class="modal__featured">
@@ -10,7 +11,7 @@
       </div>
       <div class="modal__content">
         <h2>REPORTE MÉDICO DEL PACIENTE</h2>
-        <form v-on:submit.prevent="processReportEvolution">
+        <form v-on:submit.prevent="createReportEvolution">
           <ul class="form-list">
             <li class="form-list__row form-list__row--inline">
               <div>
@@ -21,7 +22,7 @@
 
             <li class="form-list__row">
               <label>Doc. de identidad</label>
-              <input type="text" name="" required="" v-model="reportEvolution.idPatient"/>
+              <input type="number" name="" required="" v-model="reportEvolution.idPatient"/>
             </li>
 
             <li class="form-list__row">
@@ -90,6 +91,7 @@
 </ul>
     </div>
   </div>
+  </div>
 </template>
 
 <script>
@@ -99,7 +101,7 @@ export default {
   name: "ReportEvolution",
   data: function () {
     return {
-      reportEvolution: {
+      reportE: {
         idPatient: null,
         weight: "",
         reason_for_consultation: "",
@@ -121,52 +123,48 @@ export default {
   },
 
   methods: {
-    processReportEvolution: async function () {
+    createReportEvolution: async function () {
       await this.$apollo
         .mutate({
           mutation: gql`
-            mutation CreateReportEvolution(
-              $reportEvolution: ReportEvolutionInput!
-            ) {
-              createReportEvolution(reportEvolution: $reportEvolution) {
-                date
-                idPatient
-                age
-                weight
-                reason_for_consultation
-                current_illness
-                background
-                diseases
-                allergies
-                hereditary_family_history
-                physical_exam
-                medicines
-              }
-            }
+mutation Mutation($reportEvolution: ReportEvolutionInput!) {
+  createReportEvolution(reportEvolution: $reportEvolution) {
+    idPatient
+    weight
+    reason_for_consultation
+    current_illness
+    background
+    diseases
+    allergies
+    hereditary_family_history
+    physical_exam
+    medicines
+  }}
           `,
 
           variables: {
-            reportEvolution: this.reportEvolution,
+            reportEvolution: this.reportE,
           },
         })
 
         .then((result) => {
           let dataReportEvolution = {
-            date: result.data.createReportEvolution.date,
-            idPatient: result.data.createReportEvolution.idPatient,
-            age: result.data.createReportEvolution.age,
-            weight: result.data.createReportEvolution.weight,
+            date: data.reportE.date,
+            idPatient: data.reportE.idPatient,
+            age: data.reportE.age,
+            weight: data.reportE.weight,
             reason_for_consultation:
-              result.data.createReportEvolution.reason_for_consultation,
-            current_illness: result.data.createReportEvolution.current_illness,
-            background: result.data.createReportEvolution.background,
-            diseases: result.data.createReportEvolution.diseases,
-            allergies: result.data.createReportEvolution.allergies,
+              data.reportE.reason_for_consultation,
+            current_illness: data.reportE.current_illness,
+            background: data.reportE.background,
+            diseases: data.reportE.diseases,
+            allergies: data.reportE.allergies,
             hereditary_family_history:
-              result.data.createReportEvolution.hereditary_family_history,
-            physical_exam: result.data.createReportEvolution.physical_exam,
-            medicines: result.data.createReportEvolution.medicines,
+              data.reportE.hereditary_family_history,
+            physical_exam: data.reportE.physical_exam,
+            medicines: data.reportE.medicines,
           };
+          console.log(result);
           this.$emit("completedReportEvolution", dataReportEvolution);
         })
         .catch((error) => {

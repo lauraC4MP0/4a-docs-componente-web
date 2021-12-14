@@ -88,7 +88,7 @@ export default {
   data: function () {
     return {
       user: {
-        id: null,
+        id: "",
         username: "",
         password: "",
         name: "",

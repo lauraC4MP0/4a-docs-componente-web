@@ -91,6 +91,10 @@
             </li>
           </ul>
         </form>
+        <div id="madeby">                        <span>
+                    Photo by <a href="http://pngimg.com/image/16040" target="_blank">pngimg</a>.
+                  </span>
+        </div>
         
       </div>
       <ul id="navigationMenu">
@@ -132,11 +136,11 @@ export default {
       month: document.getElementById("month"),
       day: document.getElementById("day"),
       patient: {
-        id: null,
+        id: "",
         name: "",
         lastname: "",
         dateBirth: "",
-        phoneNumber: null,
+        phoneNumber: "",
         email: "",
         bloodType: "",
       },
@@ -198,6 +202,14 @@ export default {
 </script>
 
 <style>
+#madeby {
+  color:#676767;
+}
+
+#madeby span,a{
+    size: 7px;
+}   
+
 .visuallyhidden {
   border: 0;
   clip: rect(0 0 0 0);

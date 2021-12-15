@@ -2,17 +2,14 @@ import gql from "graphql-tag";
 import { createRouter, createWebHistory } from "vue-router";
 import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client/core'
 import App                      from './App.vue'
-import LogIn                    from './components/LogIn.vue' // Jira y Mockup
-import SignUp                   from './components/SignUp.vue' //JM
-import Home                     from './components/home.vue' //JM
-import NewPatient               from './components/NewPatient.vue' //JM
-import UpdatePatient            from './components/UpdatePatient.vue' //JM
+import LogIn                    from './components/LogIn.vue' 
+import SignUp                   from './components/SignUp.vue' 
+import Home                     from './components/home.vue' 
+import NewPatient               from './components/NewPatient.vue' 
+import UpdatePatient            from './components/UpdatePatient.vue' 
 import DeletePatient            from './components/DeletePatient.vue'
-import ReportEvolution          from './components/ReportEvolution.vue' //JM
-import HistoricReport           from './components/HistoricReport.vue' //JM
-//import SuccessfullOperation     from './components/SuccessfullOperation.vue' //Solo mockup
-
-
+import ReportEvolution          from './components/ReportEvolution.vue' 
+import HistoricReport           from './components/HistoricReport.vue' 
 
 
 const routes = [
@@ -47,12 +44,6 @@ const routes = [
         component:DeletePatient,
         meta:{requiresAuth:true}
     },
-   /* {
-        path: '/user/userCreate',
-        name: "userCreate",
-        component: UserCreate,
-        meta: { requiresAuth: true }
-    },*/
     {
         path: '/patients',
         name: "newPatient",
@@ -85,7 +76,7 @@ const router = createRouter({
 });
 
 const apolloClient = new ApolloClient({
-    link: createHttpLink({ uri: 'http://localhost:4000/' }),
+    link: createHttpLink({ uri: 'https://git.heroku.com/consulmedic-api.git' }),
     cache: new InMemoryCache()
 })
 

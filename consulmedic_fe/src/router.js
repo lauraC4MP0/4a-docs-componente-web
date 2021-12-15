@@ -76,7 +76,7 @@ const router = createRouter({
 });
 
 const apolloClient = new ApolloClient({
-    link: createHttpLink({ uri: 'https://git.heroku.com/consulmedic-api.git' }),
+    link: createHttpLink({ uri: 'https://consulmedic-api.herokuapp.com/' }),
     cache: new InMemoryCache()
 })
 

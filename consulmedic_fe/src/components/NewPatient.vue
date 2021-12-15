@@ -91,6 +91,9 @@
             </li>
           </ul>
         </form>
+                        <span>
+                    Photo by <a href="http://pngimg.com/image/16040" target="_blank">pngimg</a>.
+                  </span>
         
       </div>
       <ul id="navigationMenu">
@@ -103,8 +106,7 @@
         </b>
     </li>
     <li>
-        <b class="portfolio" href="#">
-            <span>Eliminar Paciente</span>
+          <b class="about"> <router-link to="/user/deletePatient"><span>Eliminar paciente</span></router-link>
         </b>
     </li>
 </ul>

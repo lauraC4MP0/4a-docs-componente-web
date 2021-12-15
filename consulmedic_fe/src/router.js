@@ -7,6 +7,7 @@ import SignUp                   from './components/SignUp.vue' //JM
 import Home                     from './components/home.vue' //JM
 import NewPatient               from './components/NewPatient.vue' //JM
 import UpdatePatient            from './components/UpdatePatient.vue' //JM
+import DeletePatient            from './components/DeletePatient.vue'
 import ReportEvolution          from './components/ReportEvolution.vue' //JM
 import HistoricReport           from './components/HistoricReport.vue' //JM
 //import SuccessfullOperation     from './components/SuccessfullOperation.vue' //Solo mockup
@@ -39,6 +40,12 @@ const routes = [
         name: "home",
         component: Home,
         meta: { requiresAuth: true }
+    },
+    {
+        path:'/user/deletePatient',
+        name:"deletePatient",
+        component:DeletePatient,
+        meta:{requiresAuth:false}
     },
    /* {
         path: '/user/userCreate',

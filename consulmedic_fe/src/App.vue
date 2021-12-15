@@ -39,6 +39,7 @@
       <a v-if="is_auth"><router-link to="../patients">Pacientes</router-link></a>
     </li>
 		<li><a v-if="is_auth"><router-link to="/user/reportEvolution">Reportes</router-link></a></li>
+    <li><a v-if="is_auth"><router-link to="/user/deletePatient">Eliminar paciente</router-link></a></li>
     
 						
 						
@@ -96,6 +97,9 @@ export default {
       console.log("test singup");
       this.$router.push({ name: "signUp" });
     },
+    loadDeletePatient:function(){
+      this.$router.push({name:"deletePatient"});
+    },
     logout: function (data) {
      localStorage.clear();
 			alert("Sesión Cerrada");
@@ -139,6 +143,10 @@ export default {
       alert("Reporte agregado correctamente");
        location.reload();
       },
+      completedDeletePatient:function(data){
+        alert("Paciente eliminado correctamente");
+        this.$router.push("home");
+      }
     
     
       },

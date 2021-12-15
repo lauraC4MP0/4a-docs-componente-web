@@ -22,6 +22,7 @@
         <div class= "home_buttons_patient">
             <a href="PENDIENTE" target="_blank" onClick="window.open(this.href, this.target, 'width=900,height=800'); return false;"><input type="button" value="Crear Paciente"></a>
             <a href="PENDIENTE" target="_blank" onClick="window.open(this.href, this.target, 'width=900,height=800'); return false;"><input type="button" value="Actualizar Paciente"></a>
+            <a href="PENDIENTE" target="_blank" onClick="window.open(this.href, this.target, 'width=900,height=800'); return false;"><input type="button" value="Eliminar Paciente"></a>
         </div>
         <div class = "home_report">
             

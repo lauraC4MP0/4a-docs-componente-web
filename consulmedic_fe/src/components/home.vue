@@ -1,4 +1,5 @@
 <template>
+<div>
 <div class="welcome">
 <h1>BIENVENIDO A CONSULMEDIC: {{ userById.username }}
             </h1> </div>
@@ -23,7 +24,7 @@
         
             </div>
         </div>
-
+</div>
 </template>
 
 <script>

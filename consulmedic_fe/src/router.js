@@ -10,6 +10,7 @@ import NewPatient               from './components/NewPatient.vue' //JM
 import UpdatePatient            from './components/UpdatePatient.vue' //JM
 import ReportEvolution          from './components/ReportEvolution.vue' //JM
 import HistoricReport           from './components/HistoricReport.vue' //JM
+import DeletePatient from './components/DeletePatient.vue'
 //import SuccessfullOperation     from './components/SuccessfullOperation.vue' //Solo mockup
 
 
@@ -40,6 +41,12 @@ const routes = [
         name: "home",
         component: Home,
         meta: { requiresAuth: false }
+    },
+    {
+        path:'/user/deletePatient',
+        name:"deletePatient",
+        component:DeletePatient,
+        meta:{requiresAuth:false}
     },
    /* {
         path: '/user/userCreate',
@@ -79,7 +86,7 @@ const router = createRouter({
 });
 
 const apolloClient = new ApolloClient({
-    link: createHttpLink({ uri: 'https://consulmedic-api.herokuapp.com/' }),
+    link: createHttpLink({ uri: ' http://localhost:4000/' }),
     cache: new InMemoryCache()
 })
 

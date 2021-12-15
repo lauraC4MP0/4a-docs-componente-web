@@ -87,6 +87,9 @@ export default {
       console.log("test singup");
       this.$router.push({ name: "signUp" });
     },
+    loadDeletePatient:function(){
+      this.$router.pusg({name:"deletePatient"});
+    },
     logout: function (data) {
       localStorage.removeItem(data.access_token);
       this.is_auth = false;
@@ -119,6 +122,10 @@ export default {
       completedReportEvolution: function (data){
       alert("Reporte agregado correctamente");
       },
+
+      completedDeletePatient:function(data){
+        alert(data.data.deletePatient);
+      }
     
     
       },

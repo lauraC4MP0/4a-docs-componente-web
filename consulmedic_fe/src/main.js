@@ -5,7 +5,7 @@ import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client/core
 import { createApolloProvider } from '@vue/apollo-option'
 import { setContext } from 'apollo-link-context'
 const httpLink = createHttpLink({
-    uri: ' https://consulmedic-api.herokuapp.com/',
+    uri: ' http://localhost:4000/',
 })
 const authLink = setContext((_, { headers }) => {
     return {

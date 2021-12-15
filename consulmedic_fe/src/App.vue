@@ -69,8 +69,6 @@
 <script>
 export default {
   name: "App",
-
-
    computed: {
     is_auth: {
       get: function() {
@@ -79,7 +77,6 @@ export default {
       set: function() { }
     }
   },
-
   data: function () {
     return {
       is_auth: false,
@@ -111,7 +108,6 @@ export default {
 			alert("Autenticación Exitosa");
 			this.loadHome();
     },
-
     loadHome: function() {
       this.$router.push({ name: "home" });
     },

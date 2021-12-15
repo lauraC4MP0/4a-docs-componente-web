@@ -19,12 +19,9 @@
 </template>
 
 <script>
-
 import gql from "graphql-tag";
-
 export default {
         name: "LogIn",
-
     data: function() {
         return {
             user: {
@@ -33,7 +30,6 @@ export default {
             },
         };
     },
-
     methods: {
         processLogInUser: async function() {
             await this.$apollo
@@ -50,7 +46,6 @@ export default {
                     credentials: this.user,
                 },
             })
-
             .then((result) => {
                 let dataLogIn = {
                     id: this.user.username,
@@ -59,7 +54,6 @@ export default {
                 };
                 this.$emit('completedLogIn', dataLogIn)
             })
-
             .catch((error) => {
                 if (error.response.status == "401")
                     alert("ERROR 401: Datos incorrectos, por favor intente de nuevo.");

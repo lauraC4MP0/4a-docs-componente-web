@@ -3,8 +3,8 @@
     
     <div class="menu">
       <nav>
-        <a href="https://www.colsubsidio.com/?hsLang=es" class="metricas-AccesosRapidos" data-seccion="Gestiona tus citas médicas | Colsubsidio">
-        <img src="https://images.emojiterra.com/google/android-11/512px/2695.png" alt="Colsubsidio caja de compensación familiar" class="desktop" loading="lazy" width="100" height="80">
+        <a href="#" class="metricas-AccesosRapidos" data-seccion="Bienvenido a Consulmedic">
+        <img src="https://images.emojiterra.com/google/android-11/512px/2695.png" alt="Consulmedic" class="desktop" loading="lazy" width="100" height="80">
         <img src="./ConsulMedic.png"  class="desktop" loading="lazy" width="230" height="30">
       </a>
         <button v-if="!is_auth" v-on:click="loadLogIn">Iniciar Sesión</button>
@@ -39,7 +39,6 @@
       <a v-if="is_auth"><router-link to="../patients">Pacientes</router-link></a>
     </li>
 		<li><a v-if="is_auth"><router-link to="/user/reportEvolution">Reportes</router-link></a></li>
-    <li><a v-if="is_auth"><router-link to="/user/deletePatient">Eliminar paciente</router-link></a></li>
     
 						
 						

@@ -96,7 +96,6 @@
 
 <script>
 import gql from "graphql-tag";
-
 export default {
   name: "ReportEvolution",
   data: function () {
@@ -123,7 +122,6 @@ export default {
     this.date=new Date(now);
     console.log(this.date.getFullYear()+"-"+(this.date.getMonth()+1)+"-"+this.date.getDate());
   },
-
   methods: {
     createReportEvolution: async function () {
       console.log(this.patient)
@@ -144,7 +142,6 @@ export default {
                 medicines
               }}
           `,
-
           variables: {
             reportEvolution: this.patient,
             
@@ -197,13 +194,11 @@ export default {
   position: absolute;
   width: 1px;
 }
-
 body {
   font-family: "Open Sans", sans-serif;
   color: #1a1a1a;
   background-color: #f0f0f0;
 }
-
 h1,
 h2,
 h3,
@@ -221,9 +216,7 @@ h5 {
   border: 0;
   border-bottom: 2px solid #f0f0f0;
   color:#000;
-
 }
-
 .button {
   color: #ffffff;
   background-color: #252787;
@@ -243,13 +236,11 @@ h5 {
   -ms-transform: scale(1.1);
   transform: scale(1.1);
 }
-
 .button--transparent {
   background: transparent;
   border: 0;
   outline: 0;
 }
-
 .button--close {
   position: absolute;
   top: 10px;
@@ -281,13 +272,11 @@ h5 {
   background-color: #ffffff;
   box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.1);
 }
-
 .button--info {
   position: absolute;
   top: 0;
   right: 0;
 }
-
 input {
   width: calc(100% - 10px);
   min-height: 30px;
@@ -304,7 +293,6 @@ input:focus {
   outline: none;
   border-color: #252787;
 }
-
 .form-list {
   padding-left: 0;
   list-style: none;
@@ -385,7 +373,6 @@ input:focus {
   width: auto;
   margin-right: 5px;
 }
-
 #input--cc {
   position: relative;
   padding-top: 6px;
@@ -408,7 +395,6 @@ input:focus {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-
 .modal {
   display: -ms-flexbox;
   display: flex;
@@ -465,7 +451,6 @@ input:focus {
   flex: 3;
   padding: 40px 30px;
 }
-
 .modal__content h2 {
   padding-top: 50px;
 }

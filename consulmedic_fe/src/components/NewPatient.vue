@@ -102,21 +102,15 @@
       <ul id="navigationMenu">
         <li>
           <b class="home">
-            <router-link to="/user/newPatient"
+            <router-link to="../patients"
               ><span>Crear Paciente</span></router-link
             ></b
           >
         </li>
 
+       
         <li>
-          <b class="about">
-            <router-link to="/user/updatePatient"
-              ><span>Actualizar Paciente</span></router-link
-            >
-          </b>
-        </li>
-        <li>
-          <b class="about">
+          <b class="portfolio">
             <router-link to="/user/deletePatient"
               ><span>Eliminar paciente</span></router-link
             >

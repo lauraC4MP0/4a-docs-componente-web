@@ -45,7 +45,7 @@ const routes = [
         path:'/user/deletePatient',
         name:"deletePatient",
         component:DeletePatient,
-        meta:{requiresAuth:false}
+        meta:{requiresAuth:true}
     },
    /* {
         path: '/user/userCreate',

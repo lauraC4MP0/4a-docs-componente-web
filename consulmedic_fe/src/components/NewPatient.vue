@@ -1,5 +1,5 @@
 <template>
-  <div id=newPatient class="NewPatient">
+  <div id="newPatient" class="NewPatient">
     <div class="modal__container">
       <div class="modal__featured">
         <div class="modal__circle"></div>
@@ -18,11 +18,11 @@
             </li>
             <li class="form-list__row">
               <label>Nombres</label>
-              <input type="text" name="" required v-model="patient.name"/>
+              <input type="text" name="" required v-model="patient.name" />
             </li>
             <li class="form-list__row">
               <label>Apellidos</label>
-              <input type="text" name="" required v-model="patient.lastname"/>
+              <input type="text" name="" required v-model="patient.lastname" />
             </li>
             <li class="form-list__row form-list__row--inline">
               <div>
@@ -61,7 +61,12 @@
             </li>
             <li class="form-list__row">
               <label>Número de celular</label>
-              <input type="number" name="" required v-model="patient.phoneNumber"/>
+              <input
+                type="number"
+                name=""
+                required
+                v-model="patient.phoneNumber"
+              />
             </li>
             <li class="form-list__row">
               <label>Email</label>
@@ -85,31 +90,39 @@
               </div>
             </li>
             <li>
-              <button type="submit" class="button" >
-                Crear paciente
-              </button>
+              <button type="submit" class="button">Crear paciente</button>
             </li>
           </ul>
         </form>
-                        <span>
-                    Photo by <a href="http://pngimg.com/image/16040" target="_blank">pngimg</a>.
-                  </span>
-        
+        <span>
+          Photo by
+          <a href="http://pngimg.com/image/16040" target="_blank">pngimg</a>.
+        </span>
       </div>
       <ul id="navigationMenu">
-    <li>
-        <b class="home"> <router-link to="/user/newPatient"><span>Crear Paciente</span></router-link></b>
-    </li>
+        <li>
+          <b class="home">
+            <router-link to="/user/newPatient"
+              ><span>Crear Paciente</span></router-link
+            ></b
+          >
+        </li>
 
-    <li>
-          <b class="about"> <router-link to="/user/updatePatient"><span>Actualizar Paciente</span></router-link>
-        </b>
-    </li>
-    <li>
-          <b class="about"> <router-link to="/user/deletePatient"><span>Eliminar paciente</span></router-link>
-        </b>
-    </li>
-</ul>
+        <li>
+          <b class="about">
+            <router-link to="/user/updatePatient"
+              ><span>Actualizar Paciente</span></router-link
+            >
+          </b>
+        </li>
+        <li>
+          <b class="about">
+            <router-link to="/user/deletePatient"
+              ><span>Eliminar paciente</span></router-link
+            >
+          </b>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -151,17 +164,17 @@ export default {
       await this.$apollo
         .mutate({
           mutation: gql`
-     mutation SignUpPatient($patientInput: SignUpInputPatient) {
-          signUpPatient(patientInput: $patientInput) {
-            id
-            name
-            lastname
-            dateBirth
-            phoneNumber
-            email
-            bloodType
-          }
-}
+            mutation SignUpPatient($patientInput: SignUpInputPatient) {
+              signUpPatient(patientInput: $patientInput) {
+                id
+                name
+                lastname
+                dateBirth
+                phoneNumber
+                email
+                bloodType
+              }
+            }
           `,
           variables: {
             patientInput: this.patient,
@@ -182,7 +195,7 @@ export default {
         })
         .catch((error) => {
           console.log(error);
-          alert("ERROR: "+error);
+          alert("ERROR: " + error);
         });
     },
   },
@@ -456,97 +469,111 @@ input:focus {
   flex: 3;
   padding: 40px 30px;
 }
-.modal{
-    padding-top: 50px;
+.modal {
+  padding-top: 50px;
 }
 
 .modal__content h2 {
   padding-top: 50px;
 }
-#navigationMenu li{
-    list-style:none;
-    height:39px;
-    padding:2px;
-    width:40px;
+#navigationMenu li {
+  list-style: none;
+  height: 39px;
+  padding: 2px;
+  width: 40px;
 }
-#navigationMenu span{
-    /* Container properties */
-    width:0;
-    left:38px;
-    padding:0;
-    position:absolute;
-    overflow:hidden;
+#navigationMenu span {
+  /* Container properties */
+  width: 0;
+  left: 38px;
+  padding: 0;
+  position: absolute;
+  overflow: hidden;
 
-    /* Text properties */
-    font-family:'Myriad Pro',Arial, Helvetica, sans-serif;
-    font-size:18px;
-    font-weight:bold;
-    letter-spacing:0.6px;
-    white-space:nowrap;
-    line-height:39px;
+  /* Text properties */
+  font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0.6px;
+  white-space: nowrap;
+  line-height: 39px;
 
-    /* CSS3 Transition: */
-    -webkit-transition: 0.25s;
+  /* CSS3 Transition: */
+  -webkit-transition: 0.25s;
 
-    /* Future proofing (these do not work yet): */
-    -moz-transition: 0.25s;
-    transition: 0.25s;
+  /* Future proofing (these do not work yet): */
+  -moz-transition: 0.25s;
+  transition: 0.25s;
 }
 
-#navigationMenu b{
-    /* The background sprite: */
-     background:url('./navigation.jpg') no-repeat;
+#navigationMenu b {
+  /* The background sprite: */
+  background: url("./navigation.jpg") no-repeat;
 
-    height:39px;
-    width:38px;
-    display:block;
-    position:relative;
+  height: 39px;
+  width: 38px;
+  display: block;
+  position: relative;
 }
 
 /* General hover styles */
 
-#navigationMenu b:hover span{ width:auto; padding:0 20px;overflow:visible; }
-#navigationMenu b:hover{
-    text-decoration:none;
+#navigationMenu b:hover span {
+  width: auto;
+  padding: 0 20px;
+  overflow: visible;
+}
+#navigationMenu b:hover {
+  text-decoration: none;
 
-    /* CSS outer glow with the box-shadow property */
-    -moz-box-shadow:0 0 5px #9ddff5;
-    -webkit-box-shadow:0 0 5px #9ddff5;
-    box-shadow:0 0 5px #9ddff5;
+  /* CSS outer glow with the box-shadow property */
+  -moz-box-shadow: 0 0 5px #9ddff5;
+  -webkit-box-shadow: 0 0 5px #9ddff5;
+  box-shadow: 0 0 5px #9ddff5;
 }
 /* Green Button */
 
-#navigationMenu .home { background-position:0 0;}
-#navigationMenu .home:hover {   background-position:0 -39px;}
-#navigationMenu .home span{
-    background-color:#7da315;
-    color:#3d4f0c;
-    text-shadow:1px 1px 0 #99bf31;
+#navigationMenu .home {
+  background-position: 0 0;
+}
+#navigationMenu .home:hover {
+  background-position: 0 -39px;
+}
+#navigationMenu .home span {
+  background-color: #7da315;
+  color: #3d4f0c;
+  text-shadow: 1px 1px 0 #99bf31;
 }
 
 /* Blue Button */
 
-#navigationMenu .about { background-position:-38px 0px;}
-#navigationMenu .about:hover { background-position:-38px -39px;}
-#navigationMenu .about span{
-    background-color:#1e8bb4;
-    color:#223a44;
-    text-shadow:1px 1px 0 #44a8d0;
+#navigationMenu .about {
+  background-position: -38px 0px;
 }
-
-
+#navigationMenu .about:hover {
+  background-position: -38px -39px;
+}
+#navigationMenu .about span {
+  background-color: #1e8bb4;
+  color: #223a44;
+  text-shadow: 1px 1px 0 #44a8d0;
+}
 
 /* Yellow Button */
 
-#navigationMenu .portfolio { background-position:-114px 0;}
-#navigationMenu .portfolio:hover{ background-position:-114px -39px;}
-#navigationMenu .portfolio span{
-    background-color:#d0a525;
-    color:#604e18;
-    text-shadow:1px 1px 0 #d8b54b;
+#navigationMenu .portfolio {
+  background-position: -114px 0;
+}
+#navigationMenu .portfolio:hover {
+  background-position: -114px -39px;
+}
+#navigationMenu .portfolio span {
+  background-color: #d0a525;
+  color: #604e18;
+  text-shadow: 1px 1px 0 #d8b54b;
 }
 
-.main-component{
-    padding-top: 30px;
+.main-component {
+  padding-top: 30px;
 }
 </style>

@@ -76,7 +76,7 @@
           Registrarse
         </button>
       </form>
-      <a href="#" class="login">¿Ya tienes cuenta? Inicia sesión</a>
+      <a href="/user/logIng" class="login">¿Ya tienes cuenta? Inicia sesión</a>
     </div>
   </div>
   </div>
@@ -161,7 +161,7 @@ export default {
           })
           .catch((error) => {
             console.log(error);
-            alert("ERROR: "+error);
+            alert(+error);
           });
       }
     },

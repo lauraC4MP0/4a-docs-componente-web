@@ -14,7 +14,7 @@
             
         </div>
         <br>
-        <h1>Bienvenido {{ userDetailById.username }}</h1>
+        <h1>Bienvenido {{ userById.username }}</h1>
         <div class = "home_patient">
             
         </div>
@@ -53,7 +53,7 @@ export default {
         return {
             idUser: jwt_decode(localStorage.getItem("token_refresh")).user_id,
             
-            userDetailById: {
+            userById: {
                 username: "",
                 
             },
@@ -61,10 +61,10 @@ export default {
     },
 
     apollo: {
-        userDetailById: {
+        userById: {
             query: gql`
   query Query($idUser: Int!) {
-  userDetailById(idUser: $idUser) {
+  userById(idUser: $idUser) {
     username
   }
 }

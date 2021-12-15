@@ -144,7 +144,7 @@ export default {
        location.reload();
       },
       completedDeletePatient:function(data){
-        alert("Paciente eliminado correctamente");
+        alert(data.data.deletePatient);
         this.$router.push("home");
       }
     

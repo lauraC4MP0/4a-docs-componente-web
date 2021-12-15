@@ -12,6 +12,23 @@
           v-model="idPatient"
         />
         <input type="submit" value="Eliminar" />
+        <ul id="navigationMenu">
+        <li>
+          <b class="home">
+            <router-link to="../patients"
+              ><span>Crear Paciente</span></router-link
+            ></b
+          >
+        </li>
+
+                <li>
+          <b class="portfolio">
+            <router-link to="/user/deletePatient"
+              ><span>Eliminar paciente</span></router-link
+            >
+          </b>
+        </li>
+      </ul>
       </form>
       <div id="madeby">
         <span>

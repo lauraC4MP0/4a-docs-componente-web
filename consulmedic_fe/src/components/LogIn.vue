@@ -52,10 +52,11 @@ export default {
                     token_access: result.data.logIn.access,
                     token_refresh: result.data.logIn.refresh,
                 };
+                console.log(dataLogIn.id);
                 this.$emit('completedLogIn', dataLogIn)
             })
             .catch((error) => {
-                if (error.response.status == "401")
+                //if (error.response.status == "401")
                     alert("ERROR 401: Datos incorrectos, por favor intente de nuevo.");
             });
         },

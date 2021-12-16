@@ -2,11 +2,15 @@
   <div class="container">
     <div class="search">
       <h1>Buscar paciente</h1>
-      <form class="form"  v-on:submit.prevent="patientById">
-        <label for="form" >
+      <form class="form" v-on:submit.prevent="patientById">
+        <label for="form">
           <i class="ion-location"></i>
         </label>
-        <input type="number" placeholder="Documento de identificación" v-model="idPatient" />
+        <input
+          type="number"
+          placeholder="Documento de identificación"
+          v-model="idPatient"
+        />
         <input type="submit" value="Buscar" />
       </form>
       <div id="madeby">
@@ -26,15 +30,24 @@
       <div class="patient">
         <form class="form">
           <h2>Paciente</h2>
-          <p type="Documento de identidad: ">{{patient.id}}<input disabled /></p>
-          <p type="Nombres: ">{{patient.name}}<input disabled /></p>
-          <p type="Apellidos: ">{{patient.lastname}}<input disabled /></p>
-          <p type="Fecha de nacimiento: ">{{patient.dateBirth}}<input disabled /></p>
-          <p type="Número de teléfono: ">{{patient.phoneNumber}}<input disabled /></p>
-          <p type="Email: "><input disbaled />{{patient.email}}</p>
-          <p type="Tipo de sangre: ">{{patient.bloodType}}<input disabled /></p>
+          <p type="Documento de identidad: ">
+            {{ patient.id }}<input disabled />
+          </p>
+          <p type="Nombres: ">{{ patient.name }}<input disabled /></p>
+          <p type="Apellidos: ">{{ patient.lastname }}<input disabled /></p>
+          <p type="Fecha de nacimiento: ">
+            {{ patient.dateBirth }}<input disabled />
+          </p>
+          <p type="Número de teléfono: ">
+            {{ patient.phoneNumber }}<input disabled />
+          </p>
+          <p type="Email: "><input disbaled />{{ patient.email }}</p>
+          <p type="Tipo de sangre: ">
+            {{ patient.bloodType }}<input disabled />
+          </p>
         </form>
-      </div><!--
+      </div>
+      <!--
       <div class="reports">
         <ul class="list">
           <li>
@@ -82,12 +95,12 @@
 <script>
 import gql from "graphql-tag";
 
-export default{
-    name:"searchPatient",
-    data:function(){
-        return{
-            idPatient:null,
-            patient: {
+export default {
+  name: "searchPatient",
+  data: function () {
+    return {
+      idPatient: null,
+      patient: {
         id: null,
         name: "",
         lastname: "",
@@ -95,38 +108,49 @@ export default{
         phoneNumber: null,
         email: "",
         bloodType: "",
-      }
-        };
+      },
+    };
+  },
+  methods: {
+    patientById: async function () {
+      console.log(this.idPatient);
+      await this.$apollo
+        .query({
+          query: gql`
+            query Query($patientByIdId: Int) {
+              patientById(id: $patientByIdId) {
+                id
+                name
+                lastname
+                dateBirth
+                phoneNumber
+                email
+                bloodType
+                is_active
+              }
+            }
+          `,
+          variables: { patientByIdId: this.idPatient },
+        })
+        .then((result) => {
+          console.log(result.data);
+          this.patient = result.data.patientById;
+          console.log(this.patient);
+          alert("Paciente " +this.patient.name +" " +this.patient.lastname +
+              " encontrado exitosamente."
+          );
+        })
+        .catch((error) => {
+          console.log(error);
+          if (error == "Error: 404: Not Found") {
+            alert("No existe ningún paciente con el id " + this.idPatient);
+          } else {
+            alert("Ha ocurrido un error, verifique el documento por favor");
+          }
+        });
     },
-    methods:{
-        patientById:async function(){
-            console.log(this.idPatient);
-            await this.$apollo.query({
-                query:gql`query Query($patientByIdId: Int) {
-                patientById(id: $patientByIdId) {
-                    id
-                    name
-                    lastname
-                    dateBirth
-                    phoneNumber
-                    email
-                    bloodType
-                    is_active
-                }
-                }`,
-                variables:{patientByIdId:this.idPatient},
-            }).then((result)=>{
-                console.log(result.data);
-                this.patient=result.data.patientById;
-                console.log(this.patient);
-
-            }).catch((error)=>{
-                console.log(error);
-                alert("Ha ocurrido un error, verifique el documento por favor");
-            })
-        }
-    }
-}
+  },
+};
 </script>
 
 <style >

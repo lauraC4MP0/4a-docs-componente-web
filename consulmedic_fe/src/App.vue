@@ -99,9 +99,11 @@ export default {
       this.loadLogIn();
     },
     completedLogIn: function(data) {
-			localStorage.setItem("username", data.username);
-			localStorage.setItem("token_access", data.token_access);
-			localStorage.setItem("token_refresh", data.token_refresh);
+			localStorage.setItem('username', data.id);
+			localStorage.setItem('token_access', data.token_access);
+			localStorage.setItem('token_refresh', data.token_refresh);
+      console.log(data.id);
+      console.log(localStorage.getItem('username'));
 			alert("Autenticación Exitosa");
 			this.loadHome();
     },

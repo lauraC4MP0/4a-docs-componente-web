@@ -1,7 +1,7 @@
 <template>
 <div>
 <div class="welcome">
-<h1>BIENVENIDO A CONSULMEDIC: {{ userById.username }}
+<h1>BIENVENIDO A CONSULMEDIC: 
             </h1> </div>
    <div class="home"> 
         <div class = "home_content">

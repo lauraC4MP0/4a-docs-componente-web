@@ -10,6 +10,7 @@ import UpdatePatient            from './components/UpdatePatient.vue'
 import DeletePatient            from './components/DeletePatient.vue'
 import ReportEvolution          from './components/ReportEvolution.vue' 
 import HistoricReport           from './components/HistoricReport.vue' 
+import SearchPatient            from './components/SearchPatient.vue'
 
 
 const routes = [
@@ -67,6 +68,12 @@ const routes = [
         name: "historicReport",
         component: HistoricReport,
         meta: { requiresAuth: false }
+    },
+    {
+        path:'/user/searchPatient',
+        name:"searchPatient",
+        component: SearchPatient,
+        meta:{requiresAuth:true}
     }
 ];
 

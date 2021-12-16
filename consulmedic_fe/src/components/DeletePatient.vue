@@ -20,6 +20,13 @@
             ></b
           >
         </li>
+                <li>
+          <b class="about">
+            <router-link to="/user/searchPatient"
+              ><span>Buscar paciente</span></router-link
+            ></b
+          >
+        </li>
 
                 <li>
           <b class="portfolio">
@@ -69,6 +76,7 @@ export default {
         .then((result) => {
           console.log(result);
           console.log(result.data.deletePatient);
+          alert(result.data.deletePatient);
           this.$emit('completedDeletePatient', result);
         })
         .catch((error) => {

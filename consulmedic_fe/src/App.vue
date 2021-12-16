@@ -38,13 +38,7 @@
     <li>
       <a v-if="is_auth"><router-link to="../patients">Pacientes</router-link></a>
     </li>
-		<li><a v-if="is_auth"><router-link to="/user/reportEvolution">Reportes</router-link></a></li>
-    
-						
-						
-						
-			
-    
+		<li><a v-if="is_auth"><router-link to="/user/reportEvolution">Reportes</router-link></a></li>  
     <li>
       <a v-if="is_auth" v-on:click="logout"> Cerrar sesión</a>
     </li>
@@ -96,6 +90,9 @@ export default {
     loadDeletePatient:function(){
       this.$router.push({name:"deletePatient"});
     },
+    loadSearchPatient:function(){
+      this.$router.push({name:"searchPatient"});
+    },
     logout: function (data) {
      localStorage.clear();
 			alert("Sesión Cerrada");
@@ -141,6 +138,9 @@ export default {
       completedDeletePatient:function(data){
         alert(data.data.deletePatient);
         this.$router.push("home");
+      },
+      completedSearchPatient:function(data){
+        tihs.$router.push("home");
       }
     
     

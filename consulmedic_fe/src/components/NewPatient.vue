@@ -107,8 +107,14 @@
             ></b
           >
         </li>
+        <li>
+          <b class="about">
+            <router-link to="/user/searchPatient"
+              ><span>Buscar paciente</span></router-link
+            ></b
+          >
+        </li>
 
-       
         <li>
           <b class="portfolio">
             <router-link to="/user/deletePatient"
@@ -429,6 +435,7 @@ input:focus {
   background-color: #ffffff;
   border-radius: 5px;
   box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.1);
+  padding-top: 160px;
 }
 .modal__featured {
   position: relative;
@@ -464,7 +471,7 @@ input:focus {
   padding: 40px 30px;
 }
 .modal {
-  padding-top: 50px;
+  padding-top: 100px;
 }
 
 .modal__content h2 {

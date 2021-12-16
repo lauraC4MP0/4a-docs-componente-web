@@ -7,7 +7,7 @@ import { createApolloProvider } from '@vue/apollo-option'
 
 import { setContext } from 'apollo-link-context'
 const httpLink = createHttpLink({
-    uri: 'http://localhost:4000/',
+    uri: 'https://consulmedic-api.herokuapp.com/',
   
     
 })

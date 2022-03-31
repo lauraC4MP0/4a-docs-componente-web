@@ -1,7 +1,6 @@
 # ConsulMedic Componente web
 
-_Repositorio correspondiente a la documentación del microservicio encargado de la autentificación de 
-usuarios de la aplicación ConsulMedic._
+_Repositorio correspondiente a la documentación de capa de presentación de la aplicación ConsulMedic._
 
 ## ¿Qué es ConsulMedic? 📌
 
